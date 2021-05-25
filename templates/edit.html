@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{%block body%}
+	<div class="technology">
+	<div class="container">
+			<div class="contact-section">
+				<h2 class="w3">Edit post</h2>
+				<div class="contact-grids">
+					<div class="col-md-8 contact-grid">
+						<form id="ContactForm" action="/contact" method="post">
+							<input type="text" name="title" value='{{post.title}}' onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Name';}" required="">
+							<input type="text" name="slug" value='{{post.slug}}' onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+							<input type="text" name="image_file" value='{{post.image_file}}' onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Contact Number';}" required="">
+							<textarea type="text" name="content" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'content';}" required="">{{post.content}}</textarea>
+							<button type="submit" class="btn btn-lg btn-primary" id="sendMessageButton" style="background-color:rgb(255, 94, 0);">submit</button>    <a href="/dashboard"><button type="button" class="btn btn-lg btn-primary" id="sendMessageButton" style="background-color:rgb(255, 94, 0);">cancel</button></a>
+						</form>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		
+		<div class="clearfix"></div>
+	</div>
+</div>
+{% endblock %}

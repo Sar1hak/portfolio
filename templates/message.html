@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{%block body%}
+
+<!-- technology-left -->
+<div class="technology">
+	<div class="container">
+		<!-- technology-top -->
+
+    <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+    	<h1>unique id # {{contact.sno}}</h1>
+        <p>NAME: {{contact.name}}</p>
+        <p>DATE: {{contact.date}}</p>
+        <p>MAIL ID: {{contact.email}}</p>
+        <p>CONTACT: {{contact.phone_num}}</p>
+        <p>MESSAGE:
+            <br>
+            {{contact.message}}
+        </p>
+		<div class="clearfix"></div>
+		
+	</div>
+</div>
+
+{% endblock %}
