@@ -1,0 +1,55 @@
+{% extends "layout.html" %}
+{%block body%}
+	<div class="technology">
+	<div class="container">
+		<div class="col-md-9 technology-left">
+			<div class="contact-section">
+				<h2 class="w3">CONTACT</h2>
+				<div class="contact-grids">
+					<div class="col-md-8 contact-grid">
+						<p>Have a question about travel writing, photography, geophysics, or anything else?</p>
+						<p>I’ll for sure answer it.</p>
+						<p>I can’t promise that my answer will be intelligent, helpful, or even related to the question. Still, you’ll definitely get some kind of response, which may or may not be written shortly after the mysterious disappearance of a bottle of Old Monk.</p>
+						<form id="ContactForm" action="/contact" method="post">
+							<input type="text" name="Name" value="Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Name';}" required="">
+							<input type="email" name="Email" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}" required="">
+							<input type="text" name="Phone" value="Phone" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Contact Number';}" required="">
+							<textarea type="text" name="textarea" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Special Instruction/Comments...';}" required="">Special Instruction/Comments...</textarea>
+							<button type="submit" class="btn btn-lg btn-primary" id="sendMessageButton" style="background-color:rgb(255, 94, 0);">Send</button>
+						</form>
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
+		</div>
+		<!-- technology-right -->
+		<div class="col-md-3 technology-right">
+			<div class="widget pipdig_widget_profile">
+				<h3 class="widget-title" style="text-align:center"> 
+					<span>Hi! I'M SARTHAK</span> 
+        		</h3>
+				<div class="blog-grids">
+					<img src="{{ url_for('static', filename='images/me.jpeg') }}" alt=" " class="img-responsive" style="-webkit-border-radius:50%;-moz-border-radius:50%;border-radius: 50%;">
+					<br>
+					<p style="text-align:center">
+						Welcome to my world. Wait... who am I?
+						<br>
+						Find out more about me <a href="/about">here</a>
+					</p>
+					<div class="clearfix"> </div>
+				</div>
+				<div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;" >
+					<ul>
+						<li><a href="{{params['fb_url']}}" target="_blank"> </a></li>
+						<li><a href="{{params['github_url']}}" class="pin" target="_blank"> </a></li>
+						<li><a href="{{params['linkedin_url']}}" class="in" target="_blank"> </a></li>
+						<li><a href="{{params['instagram_url']}}" class="be" target="_blank"> </a></li>
+						
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="clearfix"></div>
+	</div>
+</div>
+{% endblock %}

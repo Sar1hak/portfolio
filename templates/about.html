@@ -1,0 +1,39 @@
+<!--
+Author: SARTHAK CHAUHAN
+-->
+{% extends "layout.html" %}
+{%block body%}
+
+	<!-- technology-left -->
+	<div class="technology">
+	<div class="container">
+		<div class="w3agile-1">
+			<div class="welcome">
+				<div class="welcome-top heading">
+					<h2 class="w3">ABOUT ME</h2>
+					<div class="welcome-bottom">
+						<img src="{{ url_for('static', filename='images/about_me.jpg') }}" class="img-responsive" alt="">
+						<!-- <p>{{params['fb_url']}}</p> : Use to display url-->
+						
+						<p>Hi, I am Sarthak Chauhan</p>
+						<p>
+							I am currently a Junior pursuing Integrated Masters of Technology focused in Geophysical Engineering from the Indian Institute of Technology Roorkee. 
+							For the past two years, I’ve worked on various projects and am an experienced Developer with a demonstrated history of working in the IT industry, skilled in Python, Machine Learning, API development, and Java. 
+							In addition, I love to take on challenging tasks to explore the field further. 
+						</p>
+						<p>
+							Besides machine learning and geophysics, I also like contemporary art and travelling. I believe everything is possible; you just have to make even the slightest possibility countable.
+							Born and raised and trained in Dehradun, I have been highly interested in football since I was a kid and can also call me a gym freak. I May not be good at something, but I always try to do my best in all.
+						</p>
+						<p>
+							A special thanks to Mayan Sachan, who helped me with the completion of this website. Do visit his page too.
+						</p>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+{% endblock %}
