@@ -1,0 +1,150 @@
+
+
+
+
+
+{% for post in posts %}
+<div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+    <div class="tch-img">
+        <a href="/post/{{post.slug}}"><img src="{{ url_for('static', filename='images/post1.png') }}" class="img-responsive" alt=""></a>
+    </div>
+    <h3><a href="/post/{{post.slug}}">{{post.title}}</a></h3>
+    <h6>BY <a href="/post/{{post.slug}}">SARTHAK CHAUHAN </a>{{post.date}}</h6>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud eiusmod tempor incididunt ut labore et dolore magna aliqua exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <p>Ut enim ad minim veniam, quis nostrud eiusmod tempor incididunt ut labore et dolore magna aliqua exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    <div class="bht1">
+        <a href="/post/{{post.slug}}">Continue Reading</a>
+    </div>
+    <div class="soci">
+        <ul>
+            <li class="hvr-rectangle-out"><a class="fb" href="#"></a></li>
+            <li class="hvr-rectangle-out"><a class="twit" href="#"></a></li>
+            <li class="hvr-rectangle-out"><a class="pin" href="#"></a></li>
+        </ul>
+    </div>
+    <div class="clearfix"></div>
+</div>
+{% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- technology-right -->
+<div class="col-md-3 technology-right">
+	<div class="widget pipdig_widget_profile">
+		<h4 class="widget-title" style="text-align:center"> 
+			<span>Hi! I'M SARTHAK</span> 
+        </h4>
+		<div class="blog-grids">
+			<img src="{{ url_for('static', filename='images/me.jpeg') }}" alt=" " class="img-responsive" style="-webkit-border-radius:50%;-moz-border-radius:50%;border-radius: 50%;">
+			<p style="text-align:center">
+				Welcome to my world. Wait... who am I?
+				<br>
+				Find out more about me <a href="/about">here</a>
+			</p>
+			<div class="clearfix"> </div>
+		</div>
+		<div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;" >
+			<ul>
+				<li><a href="{{params['fb_url']}}" target="_blank"> </a></li>
+				<li><a href="{{params['github_url']}}" class="pin" target="_blank"> </a></li>
+				<li><a href="{{params['linkedin_url']}}" class="in" target="_blank"> </a></li>
+				<li><a href="{{params['instagram_url']}}" class="be" target="_blank"> </a></li>
+				<li><a href="#" class="vimeo"> </a></li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="clearfix"></div>
+<!-- technology-right -->
+
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--SECOND WAY TO DSPLAY POSTS ON HOME PAGE-->
+
+
+
+		<!-- technology-top -->
+		<!--TODO: FETCH DATA AND USE FOR LOOP-->
+		{% for post in posts %}
+		<div class="wthree">
+			<div class="col-md-6 wthree-left wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+				<div class="tch-img">
+					<a href="/post/{{post.slug}}"><img src="{{ url_for('static', filename='images/f1.jpg') }}" class="img-responsive" alt=""></a>
+				</div>
+			</div>
+			<div class="col-md-6 wthree-right wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+				<h3><a href="/post/{{post.slug}}">{{post.title}}</a></h3>
+				<h6>BY <a href="/post/{{post.slug}}">SARTHAK</a> {{post.date}}</h6>
+				<p>{{post.content[0:3]}} ...</p>
+				<div class="bht1">
+					<a href="/post/{{post.slug}}">Read More</a>
+				</div>
+				<div class="soci">
+					<ul>
+						<li class="hvr-rectangle-out"><a class="fb" href="#"></a></li>
+						<li class="hvr-rectangle-out"><a class="twit" href="#"></a></li>
+						<li class="hvr-rectangle-out"><a class="pin" href="#"></a></li>
+					</ul>
+				</div>
+				<div class="clearfix"></div>	
+			</div>
+			<div class="clearfix"></div>
+		</div>
+		{% endfor %}
+			
