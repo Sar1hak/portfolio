@@ -1,15 +1,17 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, session, redirect
 from flask_sqlalchemy import SQLAlchemy
-from datetime import datetime
+from datetime import date, datetime
 import json
 from flask_mail import Mail
-
+from config import Server
+from werkzeug.utils import secure_filename
 with open('templates/config.json', 'r') as c:
     params = json.load(c)['params']
 
 local_server = True
 app = Flask(__name__)
 app.secret_key = "super secret key"#change this to more suitable value
+app.config['Upload_folder'] = params['upload_location']
 app.config.update(
     MAIL_SERVER = 'smtp.gmail.com',
     MAIL_PORT = '465',
@@ -19,15 +21,28 @@ app.config.update(
     MAIL_USERNAME = params['gmail_user'],
     MAIL_PASSWORD = params['gmail_password'],
     DEFAULT_MAIL_SENDER = None
-
 )
+#app.config.update(
+#    MAIL_SERVER = 'smtp.gmail.com',
+#    MAIL_PORT = '465',
+#    MAIL_USE_TLS = True,
+#    MAIL_USE_SSL = False,
+#    MAIL_DEBUG = app.debug,
+#    MAIL_USERNAME = Server.gmail_user,
+#    MAIL_PASSWORD = Server.gmail_password,
+#    DEFAULT_MAIL_SENDER = None
+#
+#)
+
 mail=Mail(app)
 #'mysql://username:password@localhost/db_name'
 if local_server:
     #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/sblog'
     app.config['SQLALCHEMY_DATABASE_URI'] = params['local_uri']
+    #app.config['SQLALCHEMY_DATABASE_URI'] = Server.local_uri
 else:
     app.config['SQLALCHEMY_DATABASE_URI'] = params['prod_uri']
+    #app.config['SQLALCHEMY_DATABASE_URI'] = Server.prod_uri
 db = SQLAlchemy(app)
 
 class Contacts(db.Model):
@@ -51,11 +66,76 @@ class Posts(db.Model):
 @app.route('/')
 def home():
     posts=Posts.query.filter_by().all()[0:params['posts_in_homepage']]
+    #posts=Posts.query.filter_by().all()[0: Server.posts_in_homepage]
     return render_template('home.html', params=params, posts=posts)
 
-@app.route('/dashboard')
+@app.route('/logout')
+def logout():
+    session.pop('user')
+    return redirect('/dashboard')
+
+
+@app.route('/edit/<string:sno>', methods=['GET','POST'])
+def edit_post(sno):
+    if ('user' in session and session['user']== params['admin_user']):
+         if request.method == 'POST':
+             req_title = request.form.get('title')
+             req_slug = request.form.get('sluge')
+             req_image = request.form.get('image')
+             req_content = request.form.get('content')
+             date = datetime.now()
+
+             if sno == 0:
+                 post = Posts(title =req_title,date=date,slug=req_slug,image_file=req_image,content=req_content)
+                 db.session.add(post)
+                 db.session.commit()
+             else:
+                 post = Posts.query.filter_by(sno=sno).first()
+                 post.title = req_title
+                 post.date = date
+                 post.slug = req_slug
+                 post.image_file = req_image
+                 post.content = req_content
+                 db.session.commit()
+                 return redirect('/edit'+sno)
+         post = Posts.query.filter_by(sno=sno).first()
+         return render_template('edit.html', params=params, sno=sno, post=post)
+
+import os
+@app.route('/uploader', methods=['GET','POST'])
+def file_upload():
+    if ('user' in session and session['user']== params['admin_user']):
+        if request.method == 'POST':
+            f= request.files['file1']
+            f.save(os.path.join(app.config['Upload_folder'], secure_filename(f.filename)))
+            return "Uploaded Sucessfull"
+
+@app.route('/message/<string:sno>', methods=['GET','POST'])
+def read_message(sno):
+    if ('user' in session and session['user']== params['admin_user']):
+        #if request.method == 'POST':
+        #req_title = request.form.get('title')
+        contact = Contacts.query.filter_by(sno=sno).first()
+        return render_template('message.html', params=params, contact=contact, sno=sno)
+
+
+@app.route('/dashboard', methods=['GET','POST'])
 def dashboard():
-    return render_template('login.html', params=params)
+    if ('user' in session and session['user']== params['admin_user']):
+        posts = Posts.query.all()
+        contacts = Contacts.query.all()
+        return render_template('dashboard.html', params=params, posts=posts, contacts=contacts)
+    if request.method == 'POST':
+        username = request.form.get('admin_name')
+        password = request.form.get('admin_password')
+        if username == params['admin_user'] and password == params['admin_password']:
+            #set the session variable
+            session['user']=username
+            posts = Posts.query.all()
+            contacts = Contacts.query.all()
+            return render_template('dashboard.html', params=params, posts=posts, contacts=contacts)
+    else:
+        return render_template('login.html', params=params)
 
 
 @app.route('/blog')
@@ -86,9 +166,9 @@ def contact():
         contact_num = request.form.get("Phone")
         text = request.form.get("textarea")
 
-        #entry = Contacts(name=name, email=email, phone_num=contact_num,date=datetime.now(), message=text)
-        #db.session.add(entry)
-        #db.session.commit()
+        entry = Contacts(name=name, email=email, phone_num=contact_num,date=datetime.now(), message=text)
+        db.session.add(entry)
+        db.session.commit()
         
         """mail.send_message('New mail from' + name,
                           sender = email, 
