@@ -15,8 +15,9 @@ with open('templates/config.json', 'r') as c:
 
 local_server = True
 app = Flask(__name__)
-app.secret_key = "super secret key"#change this to more suitable value
+app.secret_key = params["secret_key"]
 app.config['Upload_folder'] = params['upload_location']
+"""
 app.config.update(
     MAIL_SERVER = 'smtp.gmail.com',
     MAIL_PORT = '465',
@@ -26,7 +27,7 @@ app.config.update(
     MAIL_USERNAME = params['gmail_user'],
     MAIL_PASSWORD = params['gmail_password'],
     DEFAULT_MAIL_SENDER = None
-)
+)"""
 #app.config.update(
 #    MAIL_SERVER = 'smtp.gmail.com',
 #    MAIL_PORT = '465',
@@ -39,7 +40,10 @@ app.config.update(
 #
 #)
 
+"""
 mail=Mail(app)
+
+"""
 #'mysql://username:password@localhost/db_name'
 if local_server:
     #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/sblog'
