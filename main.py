@@ -1,3 +1,8 @@
+#style 611
+
+
+
+
 from flask import Flask, render_template, request, session, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date, datetime
@@ -75,6 +80,15 @@ def logout():
     return redirect('/dashboard')
 
 
+@app.route('/delete/<string:sno>',methods=['GET','POST'])
+def delete_post(sno):
+    if ('user' in session and session['user']== params['admin_user']):
+        post= Posts.query.filter_by(sno=sno).first()
+        db.session.delete(post)
+        db.session.commit()
+    return redirect('/dashboard')
+
+
 @app.route('/edit/<string:sno>', methods=['GET','POST'])
 def edit_post(sno):
     if ('user' in session and session['user']== params['admin_user']):
@@ -99,7 +113,7 @@ def edit_post(sno):
                  db.session.commit()
                  return redirect('/edit'+sno)
          post = Posts.query.filter_by(sno=sno).first()
-         return render_template('edit.html', params=params, sno=sno, post=post)
+         return render_template('edit.html', params=params, sno=int(sno), post=post)
 
 import os
 @app.route('/uploader', methods=['GET','POST'])
@@ -140,7 +154,7 @@ def dashboard():
 
 @app.route('/blog')
 def music():
-    return render_template('travel.html', params=params)
+    return render_template('blog.html', params=params)
 
 
 @app.route('/about')
