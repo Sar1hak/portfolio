@@ -198,7 +198,7 @@ def contact():
 def post_page(post_slug):
     #post= Posts.query.filter_by(slug=post_slug)
     post= Posts.query.filter_by(slug=post_slug).first()
-    return render_template('post101.html', params=params, post=post)
+    return render_template('posts.html', params=params, post=post)
 
 app.run(debug=True)
 
