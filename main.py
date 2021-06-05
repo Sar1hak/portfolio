@@ -84,6 +84,16 @@ def logout():
     return redirect('/dashboard')
 
 
+@app.route('/olivia')
+def olivia():
+
+    return render_template('olivia.html', params=params)
+
+@app.route('/pyGrace')
+def pyGrace():
+
+    return render_template('pyGrace.html', params=params)
+
 @app.route('/delete/<string:sno>',methods=['GET','POST'])
 def delete_post(sno):
     if ('user' in session and session['user']== params['admin_user']):
