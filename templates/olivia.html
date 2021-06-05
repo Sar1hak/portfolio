@@ -1,0 +1,63 @@
+{% extends "layout.html" %}
+{%block body%}
+
+<div class="technology">
+	<div class="container">
+		<div class="w3agile-1">
+			<div class="welcome">
+				<div class="welcome-top heading">
+					<h2 class="w3">Olivia</h2>
+					<div class="welcome-bottom">
+						<img src="{{ url_for('static', filename='images/t4.jpg') }}" class="img-responsive" alt="">
+						
+						<p>
+							An AI chatbot is a program within a website or app that simulates human conversations using NLP 
+                            (natural language processing). They are programmed to address users' requirements autonomously of 
+                            a human operator. Standard functions of chatbots include answering frequently asked questions and 
+                            assisting users in navigating the website or app. 
+                        </p>
+                        <p>
+                            Rasa is an open-source tool used to build custom AI chatbots using Python and natural language 
+                            understanding (NLU). Rasa provides a framework for developing AI chatbots that uses natural language 
+                            understanding (NLU) and machine learning. Rasa chatbots can understand the intent behind the 
+                            customers' requests and account for each customer's entire conversation history when interacting with 
+                            them, and straightforwardly respond to their questions. It also allows the user to train the model and 
+                            add custom actions.
+                        </p>
+                        <p>
+                            Rasa has two main components:
+                            <br>
+                            Rasa NLU: Rasa NLU is used for intent classification (decides what the user is asking), extracting the 
+                            entity from the bot in structured data format and helps the chatbot understand what the user is saying.
+                            <br>
+                            Rasa Core: A chatbot framework with machine learning-based dialogue management that takes the structured 
+                            input from the NLU and predicts the following best action using a probabilistic model like LSTM neural 
+                            network rather than an if/else statement. It also uses reinforcement learning to improve the prediction 
+                            of the following best action.
+                        </p>
+                        <p>
+                            Here, I created Olivia, a rasa chatbot, and Olivia can use it for easy navigation through my website. 
+                            <br>
+                            Do try it.
+                            <br>
+                            If you don't know where to start with, here are some commands or responses you could try out with Olivia.
+
+
+						</p>
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}
