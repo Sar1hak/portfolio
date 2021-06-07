@@ -1,0 +1,142 @@
+<!--
+Author: Sarthak Chauhan
+mail id: chauhansarthak3@gmail.com
+-->
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>Sarthak Chauhan - Portfolio</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="keywords" content="Style Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+<script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel='stylesheet' type='text/css' />
+<!-- Custom Theme files -->
+<link href='//fonts.googleapis.com/css?family=Raleway:400,600,700' rel='stylesheet' type='text/css'>
+<link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet' type='text/css' />	
+<script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
+<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+</head>
+<body>
+<div class="header" id="ban">
+	<div class="container">
+		<div class="header_right">
+			<nav class="navbar navbar-default">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+					<nav class="link-effect-7" id="link-effect-7">
+						<ul class="nav navbar-nav">
+							<li><a href="/">Home</a></li>
+							<li><a href="/about">About</a></li>
+							<li><a href="https://github.com/Sar1hak" target="_blank">Github</a></li>
+							<li><a href="/contact">Contact</a></li>
+							<li><a href="/blog">Blog</a></li>
+						</ul>
+					</nav>
+          
+				</div>
+				<!-- /.navbar-collapse -->
+			</nav>
+		</div>
+		<div class="clearfix"> </div>	
+	</div>
+</div>
+<!-- banner -->
+<div class="banner-1">
+</div> 
+
+
+
+<div class="technology">
+  <div class="container">
+    <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+      <h1>Add New Post</h1>
+      <br>
+      <a href="/edit/0"></a><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Add New Post</button></a>
+    </div>
+    <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+      <h1>Upload A File</h1>
+      <br>
+      <h4>Data to be uploaded to static/images</h4>
+      <br>
+        <form action="/uploader" method="POST" enctype="multipart/form-data">
+            <input type="file" name="file1">
+            <br>
+            <button type="submit" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Upload</button>
+    </div>
+    <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+      <h1>Edit Posts</h1>
+      <br>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Serial Number</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for post in posts %}
+            <tr>
+              <th scope="row">#{{post.sno}}</th>
+              <td>{{post.title}}</td>
+              <td>{{post.date}}</td>
+              <td><a href="/edit/{{post.sno}}"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Edit</button></a></td>
+              <td><a href="/delete/{{post.sno}}"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Delete</button></a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+      <h1>View Dilevered Messages</h1>
+      <br>
+      <table class="table table-dark">
+        <thead>
+          <tr>
+            <th scope="col">Serial Number</th>
+            <th scope="col">Name</th>
+            <th scope="col">Date</th>
+            <th scope="col">Message</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for contact in contacts %}
+            <tr>
+              <th scope="row">#{{contact.sno}}</th>
+              <td>{{contact.name}}</td>
+              <td>{{contact.date}}</td>
+              <td><a href="/message/{{contact.sno}}"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">View</button></a></td>
+            </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+	<div class="copyright wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s"></div>
+		<div class="copyright">
+      <p><a href="/logout">->LOGOUT</a></p>
+				<p>© 2021 <a href="/about">Sarthak Chauhan</a>. All rights reserved.</p>
+		</div>
+	</div>
+
+</body>
+</html>

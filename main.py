@@ -1,3 +1,8 @@
+#style 611
+
+
+
+
 from flask import Flask, render_template, request, session, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date, datetime
@@ -10,8 +15,9 @@ with open('templates/config.json', 'r') as c:
 
 local_server = True
 app = Flask(__name__)
-app.secret_key = "super secret key"#change this to more suitable value
+app.secret_key = params["secret_key"]
 app.config['Upload_folder'] = params['upload_location']
+"""
 app.config.update(
     MAIL_SERVER = 'smtp.gmail.com',
     MAIL_PORT = '465',
@@ -21,7 +27,7 @@ app.config.update(
     MAIL_USERNAME = params['gmail_user'],
     MAIL_PASSWORD = params['gmail_password'],
     DEFAULT_MAIL_SENDER = None
-)
+)"""
 #app.config.update(
 #    MAIL_SERVER = 'smtp.gmail.com',
 #    MAIL_PORT = '465',
@@ -34,7 +40,10 @@ app.config.update(
 #
 #)
 
+"""
 mail=Mail(app)
+
+"""
 #'mysql://username:password@localhost/db_name'
 if local_server:
     #app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:@localhost/sblog'
@@ -75,6 +84,25 @@ def logout():
     return redirect('/dashboard')
 
 
+@app.route('/olivia')
+def olivia():
+
+    return render_template('olivia.html', params=params)
+
+@app.route('/pyGrace')
+def pyGrace():
+
+    return render_template('pyGrace.html', params=params)
+
+@app.route('/delete/<string:sno>',methods=['GET','POST'])
+def delete_post(sno):
+    if ('user' in session and session['user']== params['admin_user']):
+        post= Posts.query.filter_by(sno=sno).first()
+        db.session.delete(post)
+        db.session.commit()
+    return redirect('/dashboard')
+
+
 @app.route('/edit/<string:sno>', methods=['GET','POST'])
 def edit_post(sno):
     if ('user' in session and session['user']== params['admin_user']):
@@ -99,7 +127,7 @@ def edit_post(sno):
                  db.session.commit()
                  return redirect('/edit'+sno)
          post = Posts.query.filter_by(sno=sno).first()
-         return render_template('edit.html', params=params, sno=sno, post=post)
+         return render_template('edit.html', params=params, sno=int(sno), post=post)
 
 import os
 @app.route('/uploader', methods=['GET','POST'])
@@ -140,7 +168,7 @@ def dashboard():
 
 @app.route('/blog')
 def music():
-    return render_template('travel.html', params=params)
+    return render_template('blog.html', params=params)
 
 
 @app.route('/about')
@@ -184,7 +212,7 @@ def contact():
 def post_page(post_slug):
     #post= Posts.query.filter_by(slug=post_slug)
     post= Posts.query.filter_by(slug=post_slug).first()
-    return render_template('post101.html', params=params, post=post)
+    return render_template('posts.html', params=params, post=post)
 
 app.run(debug=True)
 

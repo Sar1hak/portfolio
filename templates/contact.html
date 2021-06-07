@@ -7,7 +7,7 @@
 				<h2 class="w3">CONTACT</h2>
 				<div class="contact-grids">
 					<div class="col-md-8 contact-grid">
-						<p>Have a question about travel writing, photography, geophysics, or anything else?
+						<p>Have a question about Weightlifting, Data Science, Geophysics, or anything else?
 						<br>
 						I’ll for sure answer it.
 						<br>
@@ -31,7 +31,9 @@
 					<span>Hi! I'M SARTHAK</span> 
         		</h3>
 				<div class="blog-grids">
-					<img src="{{ url_for('static', filename='images/me.jpeg') }}" alt=" " class="img-responsive" style="-webkit-border-radius:50%;-moz-border-radius:50%;border-radius: 50%;">
+					<a href="/about" class="wow fadeInUp animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+						<img src="{{ url_for('static', filename='images/me.jpeg') }}" alt=" " class="img-responsive zoom-img" style="-webkit-border-radius:50%;-moz-border-radius:50%;border-radius: 50%;">
+				    </a>
 					<br>
 					<p style="text-align:center">
 						Welcome to my world. Wait... who am I?
@@ -39,15 +41,6 @@
 						Find out more about me <a href="/about">here</a>
 					</p>
 					<div class="clearfix"> </div>
-				</div>
-				<div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;" >
-					<ul>
-						<li><a href="{{params['fb_url']}}" target="_blank"> </a></li>
-						<li><a href="{{params['github_url']}}" class="pin" target="_blank"> </a></li>
-						<li><a href="{{params['linkedin_url']}}" class="in" target="_blank"> </a></li>
-						<li><a href="{{params['instagram_url']}}" class="be" target="_blank"> </a></li>
-						
-					</ul>
 				</div>
 			</div>
 		</div>

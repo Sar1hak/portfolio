@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+{%block body%}
+
+<div class="technology">
+	<div class="container">
+		<div class="w3agile-1">
+			<div class="welcome">
+				<div class="welcome-top heading">
+					<h2 class="w3">Predictive Analysis of GRACE Satellite Data</h2>
+					<div class="welcome-bottom">
+						<h2>This is the combines Deep Learning for fusing GRACE Satellite data and research done on the following paper.</h2>
+						
+						<p>
+                            Research paper: "Combining physically-based modelling and Deep Learning for fusing GRACE satellite data: 
+                            Can we learn from mismatch?"
+                            <br>
+                            Data used:
+                            <br>
+                            GRACE-> Gravity Recovery And Climate Experiment (GRACE) enabled remote sensing of TWS anomalies, i.e., variations 
+                            from a long-term mean, at regional to continental scales. This study uses the monthly mascon TWSA product released 
+                            by Jet Propulsion Laboratory (JPL).
+                            <br>
+                            NOAH-> (Available from 2000-2019) The NOAH LSM from NASA's global land data assimilation system maintains surface 
+                            energy and water balances and simulate the exchange of water and energy fluxes at a soil-atmosphere interface. The 
+                            NOAH simulated TWS is calculated by summing soil moisture in all four soil layers (0-200 cm depth), accumulative 
+                            snow water, and total canopy water storage.
+                        </p>
+                        <p>
+                            Global hydrological models are increasingly being used to evaluate water availability and sea-level rise. However, 
+                            deficiencies in the conceptualization and parameterization in these models may introduce significant uncertainty in 
+                            model predictions. A study by Alexander Y. Sun and Bridget R. Scanlon applied Deep Learning to study the Spatial and 
+                            Temporal Patterns of mismatch or residual between model simulation and GRACE observations. Through three different 
+                            types of convolution neural network-based deep learning models, we show that deep learning is a viable approach for 
+                            improving model-GRACE match.
+                        </p>
+                        <p>
+                            In this work, we apply a hybrid approach that combines physical-based modelling and Deep Learning. Specifically, we 
+                            use deep convolutional neural networks (CNN), a particular class of artificial neural networks, to study the spatiotemporal 
+                            patterns of "mismatch" between the TWSA simulated by an LSM and observed by GRACE. The term mismatch broadly refers to the 
+                            difference between two data sets or between model simulations and observations. The learned mismatch patterns are then fed 
+                            back to the LSM to compensate for deficiencies in the LSM. That means that once trained and validated, and the CNN model may 
+                            be used to predict the observed TWSA without requiring GRACE TWSA as inputs, thus potentially filling the data gap between 
+                            GRACE and its follow-on mission. In the same fashion, the trained CNN model may also reconstruct TWSA for the pre-GRACE era. 
+                            The basic principle underlying our hybrid modelling approach is similar to that behind data assimilation methods, exploiting 
+                            mismatch patterns between predicted and observed variables. However, the assimilation part of our hybrid method is driven by 
+                            deep learning models that set the current state-of-the-art in computer vision and not limited by the Gaussian-like unimodal 
+                            error distribution commonly assumed in many data assimilation schemes. On the other hand, the spatiotemporal propagation part 
+                            of our method is driven by a physically based LSM, mitigating the lack of spatial continuity and physical interpretation in 
+                            purely data-driven statistical models.
+                        </p>
+                        
+
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

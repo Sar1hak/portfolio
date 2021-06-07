@@ -36,12 +36,12 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 			<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
 				<nav class="link-effect-7" id="link-effect-7">
 					<ul class="nav navbar-nav">
-						<li class="active act"><a href="/">Home</a></li>
-						<li><a href="/about">About</a></li>
-						<li><a href="https://github.com/Sar1hak" target="_blank">Github</a></li>
-						<li><a href="/contact">Contact</a></li>
-						<li><a href="{{ url_for('static', filename= 'images/resume.pdf') }}" target="_blank">Resume</a></li>
-						<li><a href="/blog">Blog</a></li>
+						<li class="active act"><a href="/"> Home </a></li>
+						<li><a href="/about"> About </a></li>
+						<li><a href="https://github.com/Sar1hak" target="_blank"> Github </a></li>
+						<li><a href="/contact"> Contact </a></li>
+						<li><a href="{{ url_for('static', filename= 'images/resume.pdf') }}" target="_blank"> Resume </a></li>
+						<li><a href="/blog"> Blog </a></li>
 					</ul>
 				</nav>
 			</div>
@@ -56,20 +56,25 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 <div class="banner">
     <div class="container">	
 		<h2>HI THERE, I'M SARTHAK CHAUHAN </h2>
-		<p>Hello! Glad to see you here. This is a collection of my personal projects made during free time. </p>
+		<p>Glad to see you here! This is a collection of my personal projects, I had fun working on them. 
+			<br>
+			I am passionate about Machine Learning and Software Development.
+		</p>
 		<a href="singlepage.html">PORTFOLIO</a>
 	</div>
 </div>
 
 <!-- technology-left -->
-<div class="technology"></div>
+<div class="technology">
 	<div class="container">
 		<!-- technology-top -->
 {% for post in posts %}
     <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
     	<div class="tch-img">
 			{% set image_name ='images/'+post.image_file%}
-       		<a href="/post/{{post.slug}}"><img src="{{ url_for('static', filename=image_name) }}" class="img-responsive" alt=""></a>
+       		<a href="/post/{{post.slug}}" class="wow fadeInUp animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+				<img src="{{ url_for('static', filename=image_name) }}" class="img-responsive zoom-img" alt="">
+			</a>
     	</div>
     	<h3><a href="/post/{{post.slug}}">{{post.title}}</a></h3>
     	<h6>BY <a href="/post/{{post.slug}}">SARTHAK  </a>{{post.date}}</h6>
@@ -131,5 +136,9 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 	    </div>
 	</div>
 </div>
+
+
+
+
 </body>
 </html>
