@@ -69,6 +69,7 @@ class Posts(db.Model):
     image_file= db.Column(db.String(30), unique=False, nullable=True)
     content= db.Column(db.String(1000), unique=False, nullable=True)
     date= db.Column(db.String(12), unique=False, nullable=True)
+    html_file= db.Column(db.String(120), unique=False, nullable=True)
 
 
 #<input type="submit" value="Send">
@@ -212,7 +213,14 @@ def contact():
 def post_page(post_slug):
     #post= Posts.query.filter_by(slug=post_slug)
     post= Posts.query.filter_by(slug=post_slug).first()
-    return render_template('posts.html', params=params, post=post)
+    
+    # if ".html" not in post.html_file:
+    #     print(post.html_file)
+    #     return render_template(post.html_file, params=params, post=post)
+    # else:
+    #     return render_template('posts.html', params=params, post=post)
+    return render_template(post.html_file, params=params, post=post)
+
 
 app.run(debug=True)
 
@@ -221,13 +229,3 @@ app.run(debug=True)
 #config file me add kr dena names and value
 
 
-
-
-"""
-Requirements:
-pip install mysql-connector-python
-pip install flask_sqlalchemy
-pip install flask
-pip install flask_mail
-pip install mysqlclient
-"""
