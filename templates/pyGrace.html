@@ -9,7 +9,8 @@
 					<h2 class="w3">Predictive Analysis of GRACE Satellite Data</h2>
 					<div class="welcome-bottom">
 						<h2>This is the combines Deep Learning for fusing GRACE Satellite data and research done on the following paper.</h2>
-						
+						{% set image_name ='images/'+post.image_file%}
+			   			<img src="{{ url_for('static', filename=image_name) }}" class="img-responsive" alt="">
 						<p>
                             Research paper: "Combining physically-based modelling and Deep Learning for fusing GRACE satellite data: 
                             Can we learn from mismatch?"

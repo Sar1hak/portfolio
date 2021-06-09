@@ -80,7 +80,11 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     	<h6>BY <a href="/post/{{post.slug}}">SARTHAK  </a>{{post.date}}</h6>
     	<p>{{post.content}} ...</p>
     	<div class="bht1">
-        	<a href="/post/{{post.slug}}">Continue Reading</a>
+			{% if '.html' in post.html_file %}
+			<a href="/post/{{post.slug}}">Continue Reading</a>
+			{% else -%}
+			<a href="{{post.html_file}}">Continue Reading</a>
+			{% endif %}
     	</div>
     	
     	<div class="clearfix"></div>
@@ -112,17 +116,17 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 					<div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;">
 						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 							<div id="Facebook">
-								<a href="https://www.behance.net/mayansach1206"> <img src="{{ url_for('static', filename='images/facebook.svg') }}" alt="photo" id="Behance" width="100%"> </a>
+								<a href="https://www.behance.net/mayansach1206" target="_blank"> <img src="{{ url_for('static', filename='images/facebook.svg') }}" alt="photo" id="Behance" width="100%"> </a>
 							</div>
 						</div>
 						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 							<div id="Github">
-								<a href="https://github.com/Sar1hak"> <img src="{{ url_for('static', filename='images/Github.svg') }}" alt="photo" id="Dribbble" width="100%"> </a>
+								<a href="https://github.com/Sar1hak" target="_blank"> <img src="{{ url_for('static', filename='images/Github.svg') }}" alt="photo" id="Dribbble" width="100%"> </a>
 							</div>
 						</div>
 						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 							<div id="Linkedin">
-								<a href="https://www.linkedin.com/in/sarthak-chauhan-3a8776149/"> <img src="{{ url_for('static', filename='images/linkedin.svg') }}" alt="photo" id="Medium" width="100%"> </a>
+								<a href="https://www.linkedin.com/in/sarthak-chauhan-3a8776149/" target="_blank"> <img src="{{ url_for('static', filename='images/linkedin.svg') }}" alt="photo" id="Medium" width="100%"> </a>
 							</div>
 						</div>
 					</div>
