@@ -4,7 +4,7 @@ from flask_sqlalchemy import SQLAlchemy
 from datetime import date, datetime
 import json
 from flask_mail import Mail
-from config import Server
+# from config import Server
 from werkzeug.utils import secure_filename
 with open('templates/config.json', 'r') as c:
     params = json.load(c)['params']
