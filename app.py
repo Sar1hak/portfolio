@@ -1,7 +1,3 @@
-#style 611
-
-
-
 
 from flask import Flask, render_template, request, session, redirect
 from flask_sqlalchemy import SQLAlchemy
@@ -13,7 +9,7 @@ from werkzeug.utils import secure_filename
 with open('templates/config.json', 'r') as c:
     params = json.load(c)['params']
 
-local_server = True
+local_server = params['local_server']
 app = Flask(__name__)
 app.secret_key = params["secret_key"]
 app.config['Upload_folder'] = params['upload_location']
@@ -167,9 +163,9 @@ def dashboard():
         return render_template('login.html', params=params)
 
 
-@app.route('/blog')
-def music():
-    return render_template('blog.html', params=params)
+# @app.route('/blog')
+# def music():
+#     return render_template('blog.html', params=params)
 
 
 @app.route('/about')
@@ -224,8 +220,5 @@ def post_page(post_slug):
 
 app.run(debug=True)
 
-
-#if tagline, blog name chnage krna hai to use {{params['tag_line']}} type of text in html file
-#config file me add kr dena names and value
 
 
