@@ -1,7 +1,7 @@
 {
     "params":
     {
-        "local_server": true,
+        "local_server": false,
         "local_uri": "mysql://root:@localhost/sblog",
         "prod_uri": "sqlite:///portfolio.db",
         "fb_url": "https://facebook.com/sarthak",
