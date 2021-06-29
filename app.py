@@ -3,7 +3,7 @@ from flask import Flask, render_template, request, session, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date, datetime
 import json
-from flask_mail import Mail
+# from flask_mail import Mail
 # from config import Server
 from werkzeug.utils import secure_filename
 with open('templates/config.json', 'r') as c:
