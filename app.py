@@ -217,8 +217,8 @@ def post_page(post_slug):
     #     return render_template('posts.html', params=params, post=post)
     return render_template(post.html_file, params=params, post=post)
 
-
-app.run(debug=True)
+if __name__ == '__main__':
+    app.run(debug=False)
 
 
 
