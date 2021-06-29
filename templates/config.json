@@ -1,0 +1,17 @@
+{
+    "params":
+    {
+        "local_server": true,
+        "local_uri": "mysql://root:@localhost/sblog",
+        "prod_uri": "sqlite:///portfolio.db",
+        "fb_url": "https://facebook.com/sarthak",
+        "github_url": "https://github.com/Sar1hak",
+        "instagram_url": "https://github.com/Sar1hak",
+        "linkedin_url": "https://www.linkedin.com/in/sarthak-chauhan-3a8776149/",
+        "posts_in_homepage": 5,
+        "admin_user": "a",
+        "admin_password": "a",
+        "upload_location":"/static/images",
+        "secret_key":"super secret key"
+    }
+}
