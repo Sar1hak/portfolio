@@ -210,12 +210,12 @@ def post_page(post_slug):
     #post= Posts.query.filter_by(slug=post_slug)
     post= Posts.query.filter_by(slug=post_slug).first()
     
-    # if ".html" not in post.html_file:
-    #     print(post.html_file)
-    #     return render_template(post.html_file, params=params, post=post)
-    # else:
-    #     return render_template('posts.html', params=params, post=post)
-    return render_template(post.html_file, params=params, post=post)
+    if ".html" not in post.html_file:
+        print(post.html_file)
+        return redirect(post.html_file, code=302)
+    else:
+        return render_template(post.html_file, params=params, post=post)
+    # return render_template(post.html_file, params=params, post=post)
 
 if __name__ == '__main__':
     app.run(debug=False)
