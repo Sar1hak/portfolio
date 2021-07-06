@@ -8,23 +8,8 @@
 				<div class="welcome-top heading">
 					<h2 class="w3">Predictive Analysis of GRACE Satellite Data</h2>
 					<div class="welcome-bottom">
-						<h2>This is the combines Deep Learning for fusing GRACE Satellite data and research done on the following paper.</h2>
+						<img src="{{ url_for('static', filename='images/pyGrace_map_myedit.png') }}" class="img-responsive" alt="">
 						
-						<p>
-                            Research paper: "Combining physically-based modelling and Deep Learning for fusing GRACE satellite data: 
-                            Can we learn from mismatch?"
-                            <br>
-                            Data used:
-                            <br>
-                            GRACE-> Gravity Recovery And Climate Experiment (GRACE) enabled remote sensing of TWS anomalies, i.e., variations 
-                            from a long-term mean, at regional to continental scales. This study uses the monthly mascon TWSA product released 
-                            by Jet Propulsion Laboratory (JPL).
-                            <br>
-                            NOAH-> (Available from 2000-2019) The NOAH LSM from NASA's global land data assimilation system maintains surface 
-                            energy and water balances and simulate the exchange of water and energy fluxes at a soil-atmosphere interface. The 
-                            NOAH simulated TWS is calculated by summing soil moisture in all four soil layers (0-200 cm depth), accumulative 
-                            snow water, and total canopy water storage.
-                        </p>
                         <p>
                             Global hydrological models are increasingly being used to evaluate water availability and sea-level rise. However, 
                             deficiencies in the conceptualization and parameterization in these models may introduce significant uncertainty in 
@@ -42,11 +27,7 @@
                             be used to predict the observed TWSA without requiring GRACE TWSA as inputs, thus potentially filling the data gap between 
                             GRACE and its follow-on mission. In the same fashion, the trained CNN model may also reconstruct TWSA for the pre-GRACE era. 
                             The basic principle underlying our hybrid modelling approach is similar to that behind data assimilation methods, exploiting 
-                            mismatch patterns between predicted and observed variables. However, the assimilation part of our hybrid method is driven by 
-                            deep learning models that set the current state-of-the-art in computer vision and not limited by the Gaussian-like unimodal 
-                            error distribution commonly assumed in many data assimilation schemes. On the other hand, the spatiotemporal propagation part 
-                            of our method is driven by a physically based LSM, mitigating the lack of spatial continuity and physical interpretation in 
-                            purely data-driven statistical models.
+                            mismatch patterns between predicted and observed variables.
                         </p>
                         <img src="{{ url_for('static', filename='images/pyGrace_CNN2.jpg') }}" class="img-responsive" alt="">
                         <p>
@@ -90,7 +71,17 @@
                             or so they mostly thought. This kind of is also the part of Unet that enables multiscale learning, demonstrating that this essentially is also 
                             the part of Unet that enables multiscale learning in a sort of big way.
                         </P>
-
+                        <h3><br>Data required:</h3>
+                        <p>
+                            GRACE-> Gravity Recovery And Climate Experiment (GRACE) enabled remote sensing of TWS anomalies, i.e., variations 
+                            from a long-term mean, at regional to continental scales. This study uses the monthly mascon TWSA product released 
+                            by Jet Propulsion Laboratory (JPL).
+                            <br>
+                            NOAH-> (Available from 2000-2019) The NOAH LSM from NASA's global land data assimilation system maintains surface 
+                            energy and water balances and simulate the exchange of water and energy fluxes at a soil-atmosphere interface. The 
+                            NOAH simulated TWS is calculated by summing soil moisture in all four soil layers (0-200 cm depth), accumulative 
+                            snow water, and total canopy water storage.
+                        </p>
 					</div>
 				</div>
 

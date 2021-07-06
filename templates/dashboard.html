@@ -53,21 +53,21 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 <!-- banner -->
 <div class="banner-1">
-</div> 
+</div>
 <div class="technology">
   <div class="container">
 <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
   <ul id="myTab" class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#expeditions" id="expeditions-tab" role="tab" data-toggle="tab" aria-controls="expeditions" aria-expanded="true">Posts</a></li>
-    <li role="presentation" class=""><a href="#safari" role="tab" id="safari-tab" data-toggle="tab" aria-controls="safari">Messages</a></li>
+    <li role="presentation" class="active"><a href="#allposts" id="post-tab" role="tab" data-toggle="tab" aria-controls="allposts" aria-expanded="true">Posts</a></li>
+    <li role="presentation" class=""><a href="#allmessages" role="tab" id="messages-tab" data-toggle="tab" aria-controls="allmessages">Messages</a></li>
   </ul>
   <div id="myTabContent" class="tab-content">
-    <div role="tabpanel" class="tab-pane fade" id="expeditions" aria-labelledby="expeditions-tab">
+    <div role="tabpanel" class="tab-pane fade" id="allposts" aria-labelledby="post-tab">
       
       <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
         <h1>Add New Post</h1>
         <br>
-        <a href="/edit/0"></a><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Add New Post</button></a>
+        <a href="/edit/0"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Add New Post</button></a>
       </div>
       <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
         <h1>Upload A File</h1>
@@ -77,7 +77,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           <form action="/uploader" method="POST" enctype="multipart/form-data">
               <input type="file" name="file1">
               <br>
-              <button type="submit" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Upload</button>
+              <a href="/uploader"><button type="submit" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Upload</button></a>
       </div>
       <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
         <h1>Edit Posts</h1>
@@ -110,7 +110,7 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
     </div>
     
     
-    <div role="tabpanel" class="tab-pane fade" id="safari" aria-labelledby="safari-tab">
+    <div role="tabpanel" class="tab-pane fade" id="allmessages" aria-labelledby="messages-tab">
       <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
         <h1>View Dilevered Messages</h1>
         <br>
@@ -152,13 +152,16 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 
 
 
-
+<div class="footer">
+	<div class="container">
 	<div class="copyright wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s"></div>
 		<div class="copyright">
       <p><a href="/logout">->LOGOUT</a></p>
 				<p>© 2021 <a href="/about">Sarthak Chauhan</a>. All rights reserved.</p>
 		</div>
+    </div>
 	</div>
+</div>
 
 </body>
 </html>
