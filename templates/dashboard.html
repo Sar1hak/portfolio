@@ -1,59 +1,5 @@
-<!--
-Author: Sarthak Chauhan
-mail id: chauhansarthak3@gmail.com
--->
-<!DOCTYPE HTML>
-<html>
-<head>
-<title>Sarthak Chauhan - Portfolio</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Style Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel='stylesheet' type='text/css' />
-<!-- Custom Theme files -->
-<link href='//fonts.googleapis.com/css?family=Raleway:400,600,700' rel='stylesheet' type='text/css'>
-<link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet' type='text/css' />	
-<script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-</head>
-<body>
-<div class="header" id="ban">
-	<div class="container">
-		<div class="header_right">
-			<nav class="navbar navbar-default">
-				<!-- Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-				</div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-				<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-					<nav class="link-effect-7" id="link-effect-7">
-						<ul class="nav navbar-nav">
-							<li><a href="/">Home</a></li>
-							<li><a href="/about">About</a></li>
-							<li><a href="https://github.com/Sar1hak" target="_blank">Github</a></li>
-							<li><a href="/contact">Contact</a></li>
-							<li><a href="/blog">Blog</a></li>
-						</ul>
-					</nav>
-          
-				</div>
-				<!-- /.navbar-collapse -->
-			</nav>
-		</div>
-		<div class="clearfix"> </div>	
-	</div>
-</div>
-<!-- banner -->
-<div class="banner-1">
-</div>
+{% extends "dashboard_layout.html" %}
+{%block body%}
 <div class="technology">
   <div class="container">
 <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
@@ -147,21 +93,4 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
 </div>
 </div>
 
-
-
-
-
-
-<div class="footer">
-	<div class="container">
-	<div class="copyright wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s"></div>
-		<div class="copyright">
-      <p><a href="/logout">->LOGOUT</a></p>
-				<p>© 2021 <a href="/about">Sarthak Chauhan</a>. All rights reserved.</p>
-		</div>
-    </div>
-	</div>
-</div>
-
-</body>
-</html>
+{% endblock %}

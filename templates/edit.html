@@ -1,28 +1,50 @@
-{% extends "layout.html" %}
+{% extends "dashboard_layout.html" %}
 {%block body%}
 	<div class="technology">
 	<div class="container">
 			<div class="contact-section">
 				{% if sno >= 1 %}
 				<h2 class="w3">Edit Post</h2>
-				{% else -%}
+				{% else %}
 				<h2 class="w3">Add Post</h2>
 				{% endif %}
+
+				{% with messages = get_flashed_messages() %}
+					{% if messages %}
+						{% for message in messages %}
+							
+							<div class="alert alert-success" role="alert">
+								<strong>Great!</strong> {{ message }}
+							  </div>
+						{% endfor %}
+					{% endif %}
+				{% endwith %}
+				
 				<div class="contact-grids">
 					<div class="col-md-8 contact-grid">
-						<form id="ContactForm" action="/contact" method="post">
+						<form id="EditForm" action='/edit/{{post.sno}}' method="post">
 							<h4>Title</h4>
 							{% if sno >= 1 %}
 							<P>{{post.title}}</P>
 							{% endif %}
 							<input type="text" name="title" value='{{post.title}}' onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Title';}" required="">
 							<br>
+							<hr>
 							<h4>Slug</h4>
 							{% if sno >= 1 %}
 								<p>{{post.slug}}</p>
 							{% endif %}
 							<input type="text" name="slug" value='{{post.slug}}' onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Slug Value';}" required="">
 							<br>
+							<hr>
+							<h4>Html File</h4>
+							{% if sno >= 1 %}
+								<p>{{post.html_file}}</p>
+							{% endif %}
+							<input type="text" name="html_file" value='{{post.html_file}}' onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Html File';}" required="">
+							<br>
+							<hr>
+
 							<h4>Image File</h4>
 							{% if sno >= 1 %}
 								<P>{{post.image_file}}</P>
@@ -32,6 +54,7 @@
 							<br>
 							<input type="text" name="image_file" value='{{post.image_file}}' onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Image File Name';}" required="">
 							<br>
+							<hr>
 							<h4>Content</h4>
 							{% if sno >= 1 %}
 								<P>{{post.content}}</P>
