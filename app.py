@@ -1,5 +1,4 @@
-
-from flask import Flask, render_template, request, session, redirect
+from flask import Flask, render_template, request, session, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date, datetime
 import json
@@ -105,26 +104,35 @@ def edit_post(sno):
     if ('user' in session and session['user']== params['admin_user']):
          if request.method == 'POST':
              req_title = request.form.get('title')
-             req_slug = request.form.get('sluge')
-             req_image = request.form.get('image')
+             req_slug = request.form.get('slug')
+             req_html = request.form.get('html_file')
+             req_image = request.form.get('image_file')
              req_content = request.form.get('content')
              date = datetime.now()
 
              if sno == 0:
-                 post = Posts(title =req_title,date=date,slug=req_slug,image_file=req_image,content=req_content)
+                 post = Posts(title = req_title,
+                              date = date,
+                              slug = req_slug,
+                              html_file=req_html,
+                              image_file = req_image,
+                              content = req_content)
                  db.session.add(post)
                  db.session.commit()
+                 return redirect('/dashboard')
              else:
-                 post = Posts.query.filter_by(sno=sno).first()
+                 post = Posts.query.filter_by(sno = sno).first()
                  post.title = req_title
                  post.date = date
                  post.slug = req_slug
+                 post.html_file = req_html
                  post.image_file = req_image
                  post.content = req_content
                  db.session.commit()
-                 return redirect('/edit'+sno)
+                 flash('Message Saved successful.')
+                 return redirect('/edit/' + sno)
          post = Posts.query.filter_by(sno=sno).first()
-         return render_template('edit.html', params=params, sno=int(sno), post=post)
+         return render_template('edit.html', params = params, sno = int(sno), post = post)
 
 import os
 @app.route('/uploader', methods=['GET','POST'])
@@ -219,6 +227,3 @@ def post_page(post_slug):
 
 if __name__ == '__main__':
     app.run(debug=False)
-
-
-
