@@ -3,141 +3,131 @@ Author: Sarthak Chauhan
 -->
 <!DOCTYPE HTML>
 <html>
-<head>
-<title>Sarthak Chauhan - Portfolio</title>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<meta name="keywords" content="Style Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
-<script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel='stylesheet' type='text/css' />
-<!-- Custom Theme files -->
-<link href='//fonts.googleapis.com/css?family=Raleway:400,600,700' rel='stylesheet' type='text/css'>
-<link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet' type='text/css' />	
-<script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
-<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
-<!-- animation-effect -->
-<link href="{{ url_for('static', filename='css/animate.min.css') }}" rel="stylesheet"> 
-<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
-<script>
- new WOW().init();
-</script>
-<!-- //animation-effect -->
-</head>
-<body>
-<div class="header" id="ban">
-	<div class="container">
-		<div class="header_right wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
-			<nav class="navbar navbar-default">
-			<!-- Brand and toggle get grouped for better mobile display -->
-			
-
-			<!-- Collect the nav links, forms, and other content for toggling -->
-			<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
-				<nav class="link-effect-7" id="link-effect-7">
-					<ul class="nav navbar-nav">
-						<li class="active act"><a href="/"> Home </a></li>
-						<li><a href="/about"> About </a></li>
-						<li><a href="https://github.com/Sar1hak" target="_blank"> Github </a></li>
-						<li><a href="/contact"> Contact </a></li>
-						<li><a href="{{ url_for('static', filename= 'images/resume.pdf') }}" target="_blank"> Resume </a></li>
-					</ul>
-				</nav>
+	<head>
+		<title>Sarthak Chauhan - Portfolio</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<meta name="keywords" content="Style Blog Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template, 
+		Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+		<script type="applijewelleryion/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+		<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel='stylesheet' type='text/css' />
+		<!-- Custom Theme files -->
+		<link href='//fonts.googleapis.com/css?family=Raleway:400,600,700' rel='stylesheet' type='text/css'>
+		<link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet' type='text/css' />	
+		<script src="{{ url_for('static', filename='js/jquery-1.11.1.min.js') }}"></script>
+		<script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+		<!-- animation-effect -->
+		<link href="{{ url_for('static', filename='css/animate.min.css') }}" rel="stylesheet"> 
+		<script src="{{ url_for('static', filename='js/wow.min.js') }}"></script>
+		<script>
+		new WOW().init();
+		</script>
+	</head>
+	<body>
+		<div class="header" id="ban">
+			<div class="container">
+				<div class="header_right wow fadeInLeft animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInLeft;">
+					<nav class="navbar navbar-default">
+					<div class="collapse navbar-collapse nav-wil" id="bs-example-navbar-collapse-1">
+						<nav class="link-effect-7" id="link-effect-7">
+							<ul class="nav navbar-nav">
+								<li class="active act"><a href="/"> Home </a></li>
+								<li><a href="/about"> About </a></li>
+								<li><a href="https://github.com/Sar1hak" target="_blank"> Github </a></li>
+								<li><a href="/contact"> Contact </a></li>
+								<li><a href="{{ url_for('static', filename= 'images/resume.pdf') }}" target="_blank"> Resume </a></li>
+							</ul>
+						</nav>
+					</div>
+					<!-- /.navbar-collapse -->
+					</nav>
+				</div>
+				<div class="clearfix"> </div>	
 			</div>
-			<!-- /.navbar-collapse -->
-		    </nav>
-		</div>
-		<div class="clearfix"> </div>	
-	</div>
-</div>
-<!-- banner -->
-
-<div class="banner">
-    <div class="container">	
-		<h2>HI THERE, I'M SARTHAK CHAUHAN </h2>
-		<p>Glad to see you here! This is a collection of my personal projects, I had fun working on them. 
-			<br>
-			I am passionate about Machine Learning and Software Development.
-		</p>
-		<a href="#main-content">PORTFOLIO</a>
-	</div>
-</div>
-
-<!-- technology-left -->
-<div class="technology">
-	<div id="main-content" class="container">
-		<!-- technology-top -->
-{% for post in posts %}
-    <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-    	<div class="tch-img">
-			{% set image_name ='images/'+post.image_file%}
-       		<a href="/post/{{post.slug}}" class="wow fadeInUp animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-				<img src="{{ url_for('static', filename=image_name) }}" class="img-responsive zoom-img" alt="">
-			</a>
-    	</div>
-    	<h3><a href="/post/{{post.slug}}">{{post.title}}</a></h3>
-    	<!-- <h6>BY <a href="/about">SARTHAK  </a>{{post.date}}</h6> -->
-    	<p>{{post.content}} ...</p>
-    	<div class="bht1">
-        	<a href="/post/{{post.slug}}">Continue Reading</a>
-    	</div>
-    	
-    	<div class="clearfix"></div>
-	</div>
-{% endfor %}
-		<div class="clearfix"></div>
-		
-	</div>
-</div>
-
-
-
-
-<div class="footer">
-	<div class="container">
-		<div class="col-md-4 footer-left wow fadeInLeft"  data-wow-duration=".8s" data-wow-delay=".2s">
-			<h4>GET IN TOUCH</h4>
-			<p>What to create something great? Would love to collaborate. Feel free to contact me.</p>
-			<a href="mailto:schauhan@es.iitr.ac.in">schauhan@es.iitr.ac.in</a>
 		</div>
 
-		<div class="col-md-4 footer-middle wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+		<!-- banner -->
+		<div class="banner">
+			<div class="container">	
+				<h2>HI THERE, I'M SARTHAK CHAUHAN </h2>
+				<p>Glad to see you here! This is a collection of my personal projects, I had fun working on them. 
+					<br>
+					I am passionate about Machine Learning and Software Development.
+				</p>
+				<a href="#main-content">PORTFOLIO</a>
+			</div>
 		</div>
 
-		<div class="col-md-4 footer-right wow fadeInRight"  data-wow-duration=".8s" data-wow-delay=".2s">
-			<h4>SOCIAL LINKS</h4>
-			<p>Contact me through social media </p>
-			<div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;">
-				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-					<div id="Facebook">
-						<a href="https://www.facebook.com/sarthak.chauhan.5264"> <img src="{{ url_for('static', filename='images/facebook.svg') }}" alt="photo" id="Behance" width="100%"> </a>
+		<div class="technology">
+			<div id="main-content" class="container">
+				<!-- technology-top -->
+				{% for post in posts %}
+					<div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+						<div class="tch-img">
+							{% set image_name ='images/'+post.image_file%}
+							<a href="/post/{{post.slug}}" class="wow fadeInUp animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+								<img src="{{ url_for('static', filename=image_name) }}" class="img-responsive zoom-img" alt="">
+							</a>
+						</div>
+						<h3><a href="/post/{{post.slug}}">{{post.title}}</a></h3>
+						<!-- <h6>BY <a href="/about">SARTHAK  </a>{{post.date}}</h6> -->
+						<p>{{post.content}} ...</p>
+						<div class="bht1">
+							<a href="/post/{{post.slug}}">Continue Reading</a>
+						</div>
+						<div class="clearfix"></div>
 					</div>
-				</div>
-				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-					<div id="Github">
-						<a href="https://github.com/Sar1hak"> <img src="{{ url_for('static', filename='images/Github.svg') }}" alt="photo" id="Dribbble" width="100%"> </a>
-					</div>
-				</div>
-				<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
-					<div id="Linkedin">
-						<a href="https://www.linkedin.com/in/sarthak-chauhan-3a8776149/"> <img src="{{ url_for('static', filename='images/linkedin.svg') }}" alt="photo" id="Medium" width="100%"> </a>
-					</div>
-				</div>
-			</div>	
-
-			<div class="clearfix"> </div>
-				
+				{% endfor %}
+				<div class="clearfix"></div>
+			</div>
 		</div>
-		<div class="clearfix"></div>
-	</div>
-</div>
-<div class="copyright wow"  data-wow-duration=".8s" data-wow-delay=".2s">
-	<div class="container">
-		<p>© 2021 <a href="/about">Sarthak Chauhan</a>. All rights reserved.</p>
-	</div>
-</div>
 
 
 
-</body>
+
+		<div class="footer">
+			<div class="container">
+				<div class="col-md-4 footer-left wow fadeInLeft"  data-wow-duration=".8s" data-wow-delay=".2s">
+					<h4>GET IN TOUCH</h4>
+					<p>What to create something great? Would love to collaborate. Feel free to contact me.</p>
+					<a href="mailto:schauhan@es.iitr.ac.in">schauhan@es.iitr.ac.in</a>
+				</div>
+
+				<div class="col-md-4 footer-middle wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+				</div>
+
+				<div class="col-md-4 footer-right wow fadeInRight"  data-wow-duration=".8s" data-wow-delay=".2s">
+					<h4>SOCIAL LINKS</h4>
+					<p>Contact me through social media </p>
+					<div class="nav navbar-nav navbar-right social-icons wow fadeInRight animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInRight;">
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+							<div id="Facebook">
+								<a href="https://www.facebook.com/sarthak.chauhan.5264"> <img src="{{ url_for('static', filename='images/facebook.svg') }}" alt="photo" id="Behance" width="100%"> </a>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+							<div id="Github">
+								<a href="https://github.com/Sar1hak"> <img src="{{ url_for('static', filename='images/Github.svg') }}" alt="photo" id="Dribbble" width="100%"> </a>
+							</div>
+						</div>
+						<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+							<div id="Linkedin">
+								<a href="https://www.linkedin.com/in/sarthak-chauhan-3a8776149/"> <img src="{{ url_for('static', filename='images/linkedin.svg') }}" alt="photo" id="Medium" width="100%"> </a>
+							</div>
+						</div>
+					</div>	
+
+					<div class="clearfix"> </div>
+						
+				</div>
+				<div class="clearfix"></div>
+			</div>
+		</div>
+		<div class="copyright wow"  data-wow-duration=".8s" data-wow-delay=".2s">
+			<div class="container">
+				<p>© 2021 <a href="/about">Sarthak Chauhan</a>. All rights reserved.</p>
+			</div>
+		</div>
+
+	</body>
 </html>

@@ -1,64 +1,64 @@
 {% extends "layout.html" %}
 {%block body%}
 	<div class="technology">
-	<div class="container">
-		<div class="col-md-9 technology-left">
-			<div class="contact-section">
-				<h2 class="w3">CONTACT</h2>
-				<div class="contact-grids">
-					<p>Have a question about Weightlifting, Data Science, Geophysics, or anything else?</p>
-					<br>
-					<p>	I’ll for sure answer it.</p>
-					<br>
-					<p>	I can’t promise that my answer will be intelligent, helpful, or even related to 
-						the question. Still, you’ll definitely get some kind of response, which may or may 
-						not be written shortly after the mysterious disappearance of a bottle of Old Monk.
-					</p>
-                     <br>
-					<div class="col-md-8 contact-grid">
-						<form id="ContactForm" action="/contact" method="post">
-							<input type="text" name="name" value="Your Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Name';}" required="">
-							<input type="email" name="email" value="Your Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Email';}" required="">
-							<input type="text" name="phone" value="Contact Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Contact Number';}" required="">
-							<textarea type="text" name="textarea" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Special Instruction/Comments...';}" required="">Special Instruction/Comments...</textarea>
-							<button type="submit" class="btn btn-lg btn-primary" id="sendMessageButton" style="background-color:rgb(255, 94, 0);">SEND</button>
-						</form>
-					</div>
-					<div class="clearfix"></div>
-				</div>
-			</div>
-			{% with messages = get_flashed_messages() %}
-					{% if messages %}
-						{% for message in messages %}
-							
-							<div class="alert alert-success" role="alert">
-								<strong>Great!</strong> {{ message }}
-							  </div>
-						{% endfor %}
-					{% endif %}
-			{% endwith %}
-		</div>
-		<!-- technology-right -->
-		<div class="col-md-3 technology-right">
-			<div class="widget pipdig_widget_profile">
-				<h3 class="widget-title" style="text-align:center"> 
-					<span>Hi! I'M SARTHAK</span> 
-        		</h3>
-				<div class="blog-grids">
-					<a href="/about" class="wow fadeInUp animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
-						<img src="{{ url_for('static', filename='images/me.jpeg') }}" alt=" " class="img-responsive zoom-img" style="-webkit-border-radius:50%;-moz-border-radius:50%;border-radius: 50%;">
-				    </a>
-					<br>
-					<p style="text-align:center">
-						Welcome to my world. Wait... who am I?
+		<div class="container">
+			<div class="col-md-9 technology-left">
+				<div class="contact-section">
+					<h2 class="w3">CONTACT</h2>
+					<div class="contact-grids">
+						<p>Have a question about Weightlifting, Data Science, Geophysics, or anything else?</p>
 						<br>
-						Find out more about me <a href="/about">here</a>
-					</p>
-					<div class="clearfix"> </div>
+						<p>	I’ll for sure answer it.</p>
+						<br>
+						<p>	I can’t promise that my answer will be intelligent, helpful, or even related to 
+							the question. Still, you’ll definitely get some kind of response, which may or may 
+							not be written shortly after the mysterious disappearance of a bottle of Old Monk.
+						</p>
+						<br>
+						<div class="col-md-8 contact-grid">
+							<form id="ContactForm" action="/contact" method="post">
+								<input type="text" name="name" value="Your Name" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Name';}" required="">
+								<input type="email" name="email" value="Your Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Your Email';}" required="">
+								<input type="text" name="phone" value="Contact Number" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Contact Number';}" required="">
+								<textarea type="text" name="textarea" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Special Instruction/Comments...';}" required="">Special Instruction/Comments...</textarea>
+								<button type="submit" class="btn btn-lg btn-primary" id="sendMessageButton" style="background-color:rgb(255, 94, 0);">SEND</button>
+							</form>
+						</div>
+						<div class="clearfix"></div>
+					</div>
+				</div>
+				{% with messages = get_flashed_messages() %}
+						{% if messages %}
+							{% for message in messages %}
+								
+								<div class="alert alert-success" role="alert">
+									<strong>Great!</strong> {{ message }}
+								</div>
+							{% endfor %}
+						{% endif %}
+				{% endwith %}
+			</div>
+			<!-- technology-right -->
+			<div class="col-md-3 technology-right">
+				<div class="widget pipdig_widget_profile">
+					<h3 class="widget-title" style="text-align:center"> 
+						<span>Hi! I'M SARTHAK</span> 
+					</h3>
+					<div class="blog-grids">
+						<a href="/about" class="wow fadeInUp animated animated" data-wow-delay=".5s" style="visibility: visible; animation-delay: 0.5s; animation-name: fadeInUp;">
+							<img src="{{ url_for('static', filename='images/me.jpeg') }}" alt=" " class="img-responsive zoom-img" style="-webkit-border-radius:50%;-moz-border-radius:50%;border-radius: 50%;">
+						</a>
+						<br>
+						<p style="text-align:center">
+							Welcome to my world. Wait... who am I?
+							<br>
+							Find out more about me <a href="/about">here</a>
+						</p>
+						<div class="clearfix"> </div>
+					</div>
 				</div>
 			</div>
+			<div class="clearfix"></div>
 		</div>
-		<div class="clearfix"></div>
 	</div>
-</div>
 {% endblock %}

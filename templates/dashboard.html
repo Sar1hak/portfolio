@@ -1,96 +1,91 @@
 {% extends "dashboard_layout.html" %}
 {%block body%}
-<div class="technology">
-  <div class="container">
-<div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
-  <ul id="myTab" class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#allposts" id="post-tab" role="tab" data-toggle="tab" aria-controls="allposts" aria-expanded="true">Posts</a></li>
-    <li role="presentation" class=""><a href="#allmessages" role="tab" id="messages-tab" data-toggle="tab" aria-controls="allmessages">Messages</a></li>
-  </ul>
-  <div id="myTabContent" class="tab-content">
-    <div role="tabpanel" class="tab-pane fade" id="allposts" aria-labelledby="post-tab">
-      
-      <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-        <h1>Add New Post</h1>
-        <br>
-        <a href="/edit/0"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Add New Post</button></a>
-      </div>
-      <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-        <h1>Upload A File</h1>
-        <br>
-        <h4>Data to be uploaded to static/images</h4>
-        <br>
-          <form action="/uploader" method="POST" enctype="multipart/form-data">
-              <input type="file" name="file1">
-              <br>
-              <a href="/uploader"><button type="submit" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Upload</button></a>
-      </div>
-      <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-        <h1>Edit Posts</h1>
-        <br>
-        <table class="table">
-          <thead>
-            <tr>
-              <th scope="col">Serial Number</th>
-              <th scope="col">Name</th>
-              <th scope="col">Date</th>
-              <th scope="col">Edit</th>
-              <th scope="col">Delete</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for post in posts %}
-              <tr>
-                <th scope="row">#{{post.sno}}</th>
-                <td>{{post.title}}</td>
-                <td>{{post.date}}</td>
-                <td><a href="/edit/{{post.sno}}"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Edit</button></a></td>
-                <td><a href="/delete/{{post.sno}}"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Delete</button></a></td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-  
-      <div class="clearfix"></div>
+    <div class="technology">
+        <div class="container">
+            <div class="bs-example bs-example-tabs" role="tabpanel" data-example-id="togglable-tabs">
+                <ul id="myTab" class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#allposts" id="post-tab" role="tab" data-toggle="tab" aria-controls="allposts" aria-expanded="true">Posts</a></li>
+                    <li role="presentation" class=""><a href="#allmessages" role="tab" id="messages-tab" data-toggle="tab" aria-controls="allmessages">Messages</a></li>
+                </ul>
+                <div id="myTabContent" class="tab-content">
+                    <div role="tabpanel" class="tab-pane fade" id="allposts" aria-labelledby="post-tab">
+                        <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+                            <h1>Add New Post</h1>
+                            <br>
+                            <a href="/edit/0"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Add New Post</button></a>
+                        </div>
+                        <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+                            <h1>Upload A File</h1>
+                            <br>
+                            <h4>Data to be uploaded to static/images</h4>
+                            <br>
+                            <form action="/uploader" method="POST" enctype="multipart/form-data">
+                                <input type="file" name="file1">
+                                <br>
+                                <a href="/uploader"><button type="submit" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Upload</button></a>
+                        </div>
+                        <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+                            <h1>Edit Posts</h1>
+                            <br>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                          <th scope="col">Serial Number</th>
+                                          <th scope="col">Name</th>
+                                          <th scope="col">Date</th>
+                                          <th scope="col">Edit</th>
+                                          <th scope="col">Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                  {% for post in posts %}
+                                    <tr>
+                                      <th scope="row">#{{post.sno}}</th>
+                                      <td>{{post.title}}</td>
+                                      <td>{{post.date}}</td>
+                                      <td><a href="/edit/{{post.sno}}"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Edit</button></a></td>
+                                      <td><a href="/delete/{{post.sno}}"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Delete</button></a></td>
+                                    </tr>
+                                  {% endfor %}
+                                </tbody>
+                            </table>
+                        </div>
+              
+                        <div class="clearfix"></div>
+                    </div>
+                
+                
+                <div role="tabpanel" class="tab-pane fade" id="allmessages" aria-labelledby="messages-tab">
+                  <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
+                    <h1>View Dilevered Messages</h1>
+                    <br>
+                    <table class="table table-dark">
+                      <thead>
+                        <tr>
+                          <th scope="col">Serial Number</th>
+                          <th scope="col">Name</th>
+                          <th scope="col">Date</th>
+                          <th scope="col">Message</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {% for contact in contacts %}
+                          <tr>
+                            <th scope="row">#{{contact.sno}}</th>
+                            <td>{{contact.name}}</td>
+                            <td>{{contact.date}}</td>
+                            <td><a href="/message/{{contact.sno}}"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">View</button></a></td>
+                          </tr>
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                  <div class="clearfix"></div>
+                </div>
+                
+              </div>
+            </div>
+        </div>
     </div>
-    
-    
-    <div role="tabpanel" class="tab-pane fade" id="allmessages" aria-labelledby="messages-tab">
-      <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
-        <h1>View Dilevered Messages</h1>
-        <br>
-        <table class="table table-dark">
-          <thead>
-            <tr>
-              <th scope="col">Serial Number</th>
-              <th scope="col">Name</th>
-              <th scope="col">Date</th>
-              <th scope="col">Message</th>
-            </tr>
-          </thead>
-          <tbody>
-            {% for contact in contacts %}
-              <tr>
-                <th scope="row">#{{contact.sno}}</th>
-                <td>{{contact.name}}</td>
-                <td>{{contact.date}}</td>
-                <td><a href="/message/{{contact.sno}}"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">View</button></a></td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-      </div>
-      <div class="clearfix"></div>
-    </div>
-    
-    
-
-
-  </div>
-</div>
-
-</div>
-</div>
 
 {% endblock %}
