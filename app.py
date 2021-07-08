@@ -1,3 +1,5 @@
+#1295
+
 from flask import Flask, render_template, request, session, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
 from datetime import date, datetime
@@ -114,7 +116,7 @@ def edit_post(sno):
                  post = Posts(title = req_title,
                               date = date,
                               slug = req_slug,
-                              html_file=req_html,
+                              html_file = req_html,
                               image_file = req_image,
                               content = req_content)
                  db.session.add(post)
@@ -192,17 +194,21 @@ def codes():
 
 @app.route('/contact', methods =['GET', 'POST'])
 def contact():
-    if request.method=='POST' :
+    if request.method == 'POST' :
         # ADD ENTRY TO DATABASE
-        name = request.form.get("Name")
-        email = request.form.get("Email")
-        contact_num = request.form.get("Phone")
+        name = request.form.get("name")
+        email = request.form.get("email")
+        contact_num = request.form.get("phone")
         text = request.form.get("textarea")
 
-        entry = Contacts(name=name, email=email, phone_num=contact_num,date=datetime.now(), message=text)
+        entry = Contacts(name = name, 
+                         email = email, 
+                         phone_num = contact_num,
+                         date = datetime.now(), 
+                         message = text)
         db.session.add(entry)
         db.session.commit()
-        
+        flash('Message Sent successful.')
         """mail.send_message('New mail from' + name,
                           sender = email, 
                           recipients = [params['gmail_user']],
