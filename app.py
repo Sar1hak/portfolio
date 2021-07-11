@@ -43,7 +43,7 @@ else:
 db = SQLAlchemy(app)
 
 class Contacts(db.Model):
-    sno = db.Column(db.Integer, primary_key = True)
+    sno = db.Column(db.Integer, primary_key = True, autoincrement=True)
     name = db.Column(db.String(80), unique = False, nullable = False)
     email = db.Column(db.String(120), unique = False, nullable = True)
     phone_num = db.Column(db.String(12), unique = False, nullable = False)
@@ -53,7 +53,7 @@ class Contacts(db.Model):
 
 
 class Posts(db.Model):
-    sno = db.Column(db.Integer, primary_key = True)
+    sno = db.Column(db.Integer, primary_key = True, autoincrement=True)
     title = db.Column(db.String(80), unique = False, nullable = False)
     slug = db.Column(db.String(120), unique = False, nullable = True)
     image_file = db.Column(db.String(30), unique = False, nullable = True)
