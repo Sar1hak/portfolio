@@ -610,7 +610,7 @@ i.glyphicon.glyphicon-comment {
 /*--footer--*/
 .footer {
     background: #0a0a0a;
-    padding: 1em 0;
+    padding: 2em 0;
     margin-top: 3em;
 }
 .footer h6 {
@@ -636,9 +636,7 @@ i.glyphicon.glyphicon-comment {
 .footer h4 {
     font-size: 1.7em;
     color: #fff;
-    border-bottom: 1px solid #fff;
-    margin-bottom: 1em;
-    padding-bottom: 1em;
+    padding-bottom: 0.7em;
 }
 .mid-btm {
     margin-bottom: 1em;
