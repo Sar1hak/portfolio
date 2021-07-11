@@ -206,7 +206,7 @@ def contact():
         contact_num = request.form.get("phone")
         text = request.form.get("textarea")
 
-        entry = Contacts(name = name, 
+        entry = Contacts(name = name,
                          email = email, 
                          phone_num = contact_num,
                          date = datetime.now(), 
