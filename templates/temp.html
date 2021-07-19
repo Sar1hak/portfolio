@@ -1,0 +1,40 @@
+<form id="EditForm" action='/edit/{{post.sno}}' method="post">
+    <h4>Title</h4>
+    {% if sno >= 1 %}
+    <P>{{post.title}}</P>
+    {% endif %}
+    <input type="text" name="title" value='{{post.title}}' onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Title';}" required="">
+    <br>
+    <hr>
+    <h4>Slug</h4>
+    {% if sno >= 1 %}
+        <p>{{post.slug}}</p>
+    {% endif %}
+    <input type="text" name="slug" value='{{post.slug}}' onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Slug Value';}" required="">
+    <br>
+    <hr>
+    <h4>Html File</h4>
+    {% if sno >= 1 %}
+        <p>{{post.html_file}}</p>
+    {% endif %}
+    <input type="text" name="html_file" value='{{post.html_file}}' onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Html File';}" required="">
+    <br>
+    <hr>
+
+    <h4>Image File</h4>
+    {% if sno >= 1 %}
+        <P>{{post.image_file}}</P>
+        {% set image_name ='images/'+post.image_file%}
+    {% endif %}
+    <img src="{{ url_for('static', filename=image_name) }}" class="img-responsive" alt="">
+    <br>
+    <input type="text" name="image_file" value='{{post.image_file}}' onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Image File Name';}" required="">
+    <br>
+    <hr>
+    <h4>Content</h4>
+    {% if sno >= 1 %}
+        <P>{{post.content}}</P>
+    {% endif %}
+    <textarea type="text" name="content" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Post Content';}" required="">{{post.content}}</textarea>
+    <button type="submit" class="btn btn-lg btn-primary" id="sendMessageButton" style="background-color:rgb(255, 94, 0);">SUBMIT</button>    <a href="/dashboard"><button type="button" class="btn btn-lg btn-primary" id="sendMessageButton" style="background-color:rgb(255, 94, 0);">CANCEL</button></a>
+</form>

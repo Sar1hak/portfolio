@@ -89,7 +89,7 @@ def pyGrace():
     return render_template('pyGrace.html', params = params)
 
 
-@app.route('/delete/<string:sno>',methods = ['GET','POST'])
+@app.route('/delete/post/<string:sno>',methods = ['GET','POST'])
 def delete_post(sno):
 
     if ('user' in session and session['user'] == params['admin_user']):
@@ -98,40 +98,51 @@ def delete_post(sno):
         db.session.commit()
     return redirect('/dashboard')
 
+@app.route('/delete/message/<string:sno>',methods = ['GET','POST'])
+def delete_message(sno):
+
+    if ('user' in session and session['user'] == params['admin_user']):
+        message = Contacts.query.filter_by(sno = sno).first()
+        db.session.delete(message)
+        db.session.commit()
+    return redirect('/dashboard')
 
 @app.route('/edit/<string:sno>', methods=['GET','POST'])
 def edit_post(sno):
 
     if ('user' in session and session['user'] == params['admin_user']):
          if request.method == 'POST':
-             req_title = request.form.get('title')
-             req_slug = request.form.get('slug')
-             req_html = request.form.get('html_file')
-             req_image = request.form.get('image_file')
-             req_content = request.form.get('content')
-             date = datetime.now()
-
-             if sno == 0:
-                 post = Posts(title = req_title,
-                              date = date,
-                              slug = req_slug,
-                              html_file = req_html,
-                              image_file = req_image,
-                              content = req_content)
-                 db.session.add(post)
-                 db.session.commit()
-                 return redirect('/dashboard')
-             else:
-                 post = Posts.query.filter_by(sno = sno).first()
-                 post.title = req_title
-                 post.date = date
-                 post.slug = req_slug
-                 post.html_file = req_html
-                 post.image_file = req_image
-                 post.content = req_content
-                 db.session.commit()
-                 flash('Message Saved successful.')
-                 return redirect('/edit/' + sno)
+            req_title = request.form.get('title')
+            req_slug = request.form.get('slug')
+            req_html = request.form.get('html_file')
+            req_image = request.form.get('image_file')
+            req_content = request.form.get('content')
+            date = datetime.now()
+            # print(type(sno))
+            if sno == '0':
+                rows = db.session.query(Posts).count()
+                post = Posts(sno = (rows + 1),
+                             title = req_title,
+                             date = date,
+                             slug = req_slug,
+                             html_file = req_html,
+                             image_file = req_image,
+                             content = req_content)
+                db.session.add(post)
+                db.session.commit()
+                flash('New Post Added Successful.')
+                return redirect('/dashboard')
+            else:
+                post = Posts.query.filter_by(sno = sno).first()
+                post.title = req_title
+                post.date = date
+                post.slug = req_slug
+                post.html_file = req_html
+                post.image_file = req_image
+                post.content = req_content
+                db.session.commit()
+                flash('Edited Post Saved successful.')
+                return redirect('/edit/' + sno)
          post = Posts.query.filter_by(sno = sno).first()
          return render_template('edit.html', params = params, sno = int(sno), post = post)
 
@@ -206,14 +217,16 @@ def contact():
         contact_num = request.form.get("phone")
         text = request.form.get("textarea")
 
-        entry = Contacts(name = name,
+        rows = db.session.query(Contacts).count()
+        entry = Contacts(sno = (rows + 1),
+                         name = name,
                          email = email, 
                          phone_num = contact_num,
                          date = datetime.now(), 
                          message = text)
         db.session.add(entry)
         db.session.commit()
-        flash('Message Sent successful.')
+        flash('Your Message has been sent Successful.')
         """mail.send_message('New mail from' + name,
                           sender = email, 
                           recipients = [params['gmail_user']],

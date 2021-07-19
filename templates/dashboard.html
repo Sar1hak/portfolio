@@ -8,6 +8,15 @@
                     <li role="presentation" class=""><a href="#allmessages" role="tab" id="messages-tab" data-toggle="tab" aria-controls="allmessages">Messages</a></li>
                 </ul>
                 <div id="myTabContent" class="tab-content">
+                  {% with messages = get_flashed_messages() %}
+                    {% if messages %}
+                      {% for message in messages %}		
+                        <div class="alert alert-success" role="alert">
+                          <strong>Great!</strong> {{ message }}
+                        </div>
+                      {% endfor %}
+                    {% endif %}
+                  {% endwith %}
                     <div role="tabpanel" class="tab-pane fade" id="allposts" aria-labelledby="post-tab">
                         <div class="tc-ch wow fadeInDown"  data-wow-duration=".8s" data-wow-delay=".2s">
                             <h1>Add New Post</h1>
@@ -44,7 +53,7 @@
                                       <td>{{post.title}}</td>
                                       <td>{{post.date}}</td>
                                       <td><a href="/edit/{{post.sno}}"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Edit</button></a></td>
-                                      <td><a href="/delete/{{post.sno}}"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Delete</button></a></td>
+                                      <td><a href="/delete/post/{{post.sno}}"><button type="button" class="btn btn-lg btn-primary" style="background-color:rgb(255, 94, 0);">Delete</button></a></td>
                                     </tr>
                                   {% endfor %}
                                 </tbody>
