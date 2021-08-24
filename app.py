@@ -1,4 +1,3 @@
-#1295
 
 from flask import Flask, render_template, request, session, redirect, flash
 from flask_sqlalchemy import SQLAlchemy
@@ -63,11 +62,14 @@ class Posts(db.Model):
 
 
 
+
+
 @app.route('/')
 def home():
 
     posts=Posts.query.filter_by().all()[0:params['posts_in_homepage']]
     return render_template('home.html', params=params, posts=posts)
+
 
 
 @app.route('/logout')
@@ -76,17 +78,6 @@ def logout():
     session.pop('user')
     return redirect('/dashboard')
 
-
-@app.route('/olivia')
-def olivia():
-
-    return render_template('olivia.html', params = params)
-
-
-@app.route('/pyGrace')
-def pyGrace():
-
-    return render_template('pyGrace.html', params = params)
 
 
 @app.route('/delete/post/<string:sno>',methods = ['GET','POST'])
@@ -98,6 +89,8 @@ def delete_post(sno):
         db.session.commit()
     return redirect('/dashboard')
 
+
+
 @app.route('/delete/message/<string:sno>',methods = ['GET','POST'])
 def delete_message(sno):
 
@@ -106,6 +99,8 @@ def delete_message(sno):
         db.session.delete(message)
         db.session.commit()
     return redirect('/dashboard')
+
+
 
 @app.route('/edit/<string:sno>', methods=['GET','POST'])
 def edit_post(sno):
@@ -147,6 +142,7 @@ def edit_post(sno):
          return render_template('edit.html', params = params, sno = int(sno), post = post)
 
 
+
 @app.route('/uploader', methods = ['GET','POST'])
 def file_upload():
     if ('user' in session and session['user'] == params['admin_user']):
@@ -156,6 +152,7 @@ def file_upload():
             return "Uploaded Sucessfull"
 
 
+
 @app.route('/message/<string:sno>', methods=['GET','POST'])
 def read_message(sno):
     if ('user' in session and session['user'] == params['admin_user']):
@@ -163,6 +160,7 @@ def read_message(sno):
         #req_title = request.form.get('title')
         contact = Contacts.query.filter_by(sno=sno).first()
         return render_template('message.html', params = params, contact = contact, sno = sno)
+
 
 
 @app.route('/dashboard', methods = ['GET','POST'])
@@ -184,9 +182,11 @@ def dashboard():
         return render_template('login.html', params = params)
 
 
+
 # @app.route('/blog')
 # def music():
 #     return render_template('blog.html', params=params)
+
 
 
 @app.route('/about')
@@ -195,16 +195,12 @@ def about():
     return render_template('about.html', params = params)
 
 
+
 @app.route('/signin')
 def signin():
 
     return render_template('login.html', params = params)
 
-
-@app.route('/codes')
-def codes():
-
-    return render_template('codes.html', params = params)
 
 
 @app.route('/contact', methods = ['GET', 'POST'])
@@ -238,6 +234,7 @@ def contact():
     #}
 
 
+
 @app.route('/post/<string:post_slug>', methods = ['GET'])
 def post_page(post_slug):
 
@@ -250,6 +247,10 @@ def post_page(post_slug):
     else:
         return render_template(post.html_file, params = params, post = post)
     # return render_template(post.html_file, params=params, post=post)
+
+
+
+
 
 if __name__ == '__main__':
     app.run(debug = False)

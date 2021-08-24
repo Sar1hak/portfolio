@@ -1,0 +1,97 @@
+{% extends "layout.html" %}
+{%block body%}
+
+<div class="technology">
+	<div class="container">
+		<div class="w3agile-1">
+			<div class="welcome">
+				<div class="welcome-top heading">
+					<h2 class="w3">Quantum Geographical Information System(QGIS) Plugin</h2>
+					<div class="welcome-bottom">
+						<img src="{{ url_for('static', filename='images/qgis_logo.png') }}" class="img-responsive" alt="">
+						
+                        <p>
+                            The QGIS project that was initially released in 2002 is currently a mature GIS platform, that is open-source in nature, 
+                            and allows people to use it for free, as well as contribute to the project, either directly in the source code of the 
+                            project or as plugins that extend the core functionalities. QGIS aims to be a user-friends GIS platform, consisting of 
+                            common GIS functionality (Foreword — QGIS Documentation Documentation, 2020). It is also highly extensible through a 
+                            robust plugin system. New functionality and features can easily be added to QGIS by implementing a plugin. 
+                            The plugin can be implemented in either C++ or Python (QGIS Plugins — QGIS Documentation Documentation, 2020). 
+                        </p>
+                        <p>
+                            Here, I contributed to an open-source research-oriented QGIS Plugin with the title of <b>“Snowmelt Runoff Modeling Data 
+                            Pre-Processing”</b> which was supplementary to a Masters' Thesis submitted at IIT Roorkee by Pritam Das. This 
+                            was an attempt to aid researchers mainly in the field of snow-cover variability assessment and snow-melt runoff  modeling  
+                            in their study. The plugin,  too,  is open-source in nature and is hosted at <a href="https://github.com/pritamd47/SMProcessing">https://github.com/pritamd47/SMProcessing</a>. It 
+                            provides some easily accessible algorithms to manipulate and analyze DEM data, calculate temperature lapse rate, and apply 
+                            cloud removal algorithms to daily Snow-Cover datasets. The plugin was implemented completely in Python and tools available 
+                            strictly in Python.  
+                        </p>
+
+                        <p>
+                            The plugin has three main components. <b>(1) Persistent Output Pane</b> – This pane shows the output of various processing tasks to 
+                            the user. It remains persistent across all the tabs, and the plugin uses this pane to inform the user about the tasks that 
+                            are being performed as well as the output of those tasks. <b>(2) The Tabs</b> are used to group together various sets of processing 
+                            tasks according to the datasets for which the tasks are performed. <b>(3) Processing Pane</b> – This area of the plugin hosts various 
+                            buttons and controls that perform the actual processing tasks. This pane varies according to the tab that is selected. 
+                        </p>
+                        <p>
+                            The tasks performed by the plugin are divided into three categories based on the intended datasets that are to be processed. The 
+                            tasks relate to Digital Elevation Model and Land Surface Temperature processing and Cloud-Removal from snow cover datasets. These 
+                            processing tasks are grouped in tabs named DEM, LST, and Cloud Removal, respectively. 
+                        </p>
+                        <h3><br>DEM Processing</h3>
+                        <img src="{{ url_for('static', filename='images/DEM1_Qgis.png') }}" class="img-responsive" alt="">
+                        <P>
+                            The DEM Processing tab deals with four processing options and provides a quick interface to carry out the processing tasks. Once the 
+                            DEM file is added in the QGIS project as a raster layer, the name of the file will appear in the ‘DEM’ input, where it can be 
+                            selected from the drop-down menu. The processing options are listed as buttons in the ‘Actions’ sub-section. 
+                        </P>
+
+                        <p>
+                            The first option allows the user to export the unique values present in the DEM file in a tabular format. This is often useful in 
+                            performing further calculations, such as calculation of the histogram, or generation of the hypsometric curve in any spreadsheet software 
+                            such as Microsoft Excel. It lists down the unique elevation values, their counts, and the combined area (the accuracy of which is subject 
+                            to the projection of the input DEM).
+                            <br>
+                            The second option allows the user to calculate the statistics of the DEM quickly. This provides an easy way to obtain the essential 
+                            statistics of the DEM, such as the maximum value, minimum value, mean, range, and standard deviation of the DEM.  
+                            <br>
+                            The third option, classify, is planned to allow the user to select a range of old values that are to be classified as into certain classes 
+                            in an easy to use interface. It also provides us with a histogram, which shows the interval strength of the new and old classified values.
+                            <br>
+                            The final option will allow the user to intersect DEM and vector layers. It will transfer the values of raster to the respective vector 
+                            polygons. 
+                        </p>
+
+                        <h3><br>LST</h3>
+                        <img src="{{ url_for('static', filename='images/LST_Qgis.png') }}" class="img-responsive" alt="">
+                        <p>
+                            The relationship between Elevation and Temperature is an important parameter in snow-melt runoff modeling studies that deal with 
+                            mountainous terrain. This relationship is called the temperature lapse rate. The LST tab can calculate and list the temperature lapse 
+                            rate for multiple files at once. The “Calculate Lapse Rate” will calculate the lapse rate for each file, and will write a tabular dataset 
+                            containing the lapse rate corresponding to the path of each file. 
+                        </P>
+                        <h3><br>Cloud Processing</h3>
+                        <img src="{{ url_for('static', filename='images/CloudRemoval_Qgis.png') }}" class="img-responsive" alt="">
+                        <p>
+                            Cloud Processing allows users to obtain cloud-removed daily snow-cover datasets using the modified  Gafurov & Bárdossy, 2009  Cloud 
+                            Removal Algorithm. More granular control over the parameters, such as the length of the temporal window and the kernel size of spatial windows, 
+                            are planned to be incorporated in future iterations of the plugin. 
+                        </p>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}
