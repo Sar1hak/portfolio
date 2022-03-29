@@ -1,0 +1,102 @@
+{% extends "layout.html" %}
+{%block body%}
+
+<div class="technology">
+	<div class="container">
+		<div class="w3agile-1">
+			<div class="welcome">
+				<div class="welcome-top heading">
+					<h2 class="w3">Shortest Route Alignment Toolkit (SRA Tool) Plugin</h2>
+					<div class="welcome-bottom">
+						<img src="{{ url_for('static', filename='images/sra-tool/sratool_plugin.png') }}" class="img-responsive" alt="">
+						
+                        <p>
+                            The QGIS project that was initially released in 2002 is currently a mature GIS platform, that is open-source in nature, 
+                            and allows people to use it for free, as well as contribute to the project, either directly in the source code of the 
+                            project or as plugins that extend the core functionalities. QGIS aims to be a user-friends GIS platform, consisting of 
+                            common GIS functionality (Foreword — QGIS Documentation Documentation, 2020). It is also highly extensible through a 
+                            robust plugin system. New functionality and features can easily be added to QGIS by implementing a plugin. 
+                            The plugin can be implemented in Python (QGIS Plugins — QGIS Documentation, 2020). 
+                        </p>
+                        <p>
+                            Here, I developed an open-source research-oriented QGIS Plugin with the title of <b>“Shortest Route Alignment Toolkit”</b> 
+                            which was sponsored by DRDO. Complete documentation for the plugin is available at <a href="https://sar1hak.github.io/roadmap_plugin/">sar1hak.github.io/roadmap_plugin/</a>.
+                            SRA Tool provides a vector roadmap combining the Digital Elevation Model and other physical parameters in a given environment for 
+                            better tracking. It may or may not align with the existing alignments as the plugin tries to find a shorter and more cost-effective route, 
+                            optimized according to the different possible route construction categories (for example, roads, bridges, tunnels, etc.).
+
+                        </p>
+                        <p>
+                            If you want to contribute to the plugin, feel free to contact me and create you own branch at <a href="https://github.com/Sar1hak/SRA-Tool">https://github.com/Sar1hak/SRA-Tool</a>.
+                        </p>
+                        <h3><br>PRE-PROCESSING</h3>
+                        <P>
+                            The provided input files are given in different formats, mainly raster and vector files. Pre-processing deals with converting all the 
+                            files to one particular format for easy calculations, therefore all the vector files are converted to raster files keeping the DEM as 
+                            the standard file to produce the new raster files. Slope and Elevation are extracted from the DEM and together with other raster files, 
+                            excluding the Viewshed map, are send down for the regression modelling. 
+                        </P>
+                        <img src="{{ url_for('static', filename='images/sra-tool/preprocessed_files.png') }}" class="img-responsive" alt="">
+                        <p>
+                            The plugin processing can be divided into three parts, Modelling, Pathfinding Algorithm and Tracing, and are a crucial part of the plugin.
+                        </p>
+                        <img src="{{ url_for('static', filename='images/sra-tool/flowchart_sratool1.jpg') }}" class="img-responsive" alt="">
+                        <h3><br>MODELLING</h3>
+                        <p>
+                            Regression becomes a key factor here as dealing with all the user provided files separately to validate the pathfinding algorithm becomes 
+                            quite difficult, so a common map is required that act as weighted function during the pathfinding process. Currently, the regression is 
+                            restricted to a linear function, with existing alignment acting as the dependent variable while other parameters are the independent 
+                            variable which may help in the modelling the future roads. 
+                        </P>
+                        <p>
+                            Viewshed map is added to the regression equation separately, as it acts as the probability for the selection of road path. User provided 
+                            Viewshed map is in a range from [0, 100], but to reduce the calculation and improved weighted map, range of the map is converted to [1, 10] 
+                            where the 10% of original viewshed is stored as 1.
+                        </p>
+                        <p>
+                            For efficient working of the pre-processing step and the initial step, a local cluster is created, which may involve about 90% of the in-build 
+                            desktop/computer cores and threads to increase the processing of the parameters. Local clustering becomes a crucial step when the user-provided 
+                            data is quite significant to process, reducing the plugin execution time complexity.
+                        </p>
+                        <h3><br>PATHFINDING ALGORITHM</h3>
+                        <img src="{{ url_for('static', filename='images/sra-tool/pathfinder_flowchart.png') }}" class="img-responsive" alt="">
+                        <p>
+                            Final weighted dataset act as a weighted maze path for the roadmap tracing. The second part involves the A-star algorithm, an optimized pathfinding 
+                            algorithm. The A-star algorithm is a combination of a heuristic function and a weighted function to find the optimal path that can be traced further 
+                            around. 
+                        </p>
+                        <p>
+                            A-star involves the identification of the algorithmic values from all the possible adjacent neighbours and to step on to the neighbour with the least 
+                            values, as it will be the path with the slightest hindrance. The algorithm follows the ideal route by moving the neighbour coordinate until the user 
+                            provides the end coordinate is met.
+                        </p>
+                        <h3><br>TRACING</h3>
+                        <img src="{{ url_for('static', filename='images/sra-tool/Route_GoogleEarth.jpg') }}" class="img-responsive" alt="">
+                        <p>
+                            The final part, as the A-star algorithm recedes, the backtrack tracing starts to build the output vector file that gets stored in the user-provided 
+                            destination as specified before the execution of the plugin. 
+                        </p>
+                        <h3><br>CHECK BOX (Extra)</h3>
+                        <img src="{{ url_for('static', filename='images/sra-tool/Alternate_route.png') }}" class="img-responsive" alt="">
+                        <p>
+                            The plugin contains a checkbox in the variables tab, that may sometimes help in altering routes according the existing alignments by taking the paths 
+                            similar to the existing alignments. Checking the option does not always guarantee a new route alignment as the pathfinding process is a simulation 
+                            and it tries to find the optimal path for the user. 
+                        </p>
+                        
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}
