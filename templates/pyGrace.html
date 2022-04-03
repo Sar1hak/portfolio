@@ -11,36 +11,33 @@
 						<img src="{{ url_for('static', filename='images/pyGrace_map_myedit.png') }}" class="img-responsive" alt="">
 						
                         <p>
-                            Global hydrological models are increasingly being used to evaluate water availability and sea-level rise. However, 
-                            deficiencies in the conceptualization and parameterization in these models may introduce significant uncertainty in 
-                            model predictions. A study by Alexander Y. Sun and Bridget R. Scanlon applied Deep Learning to study the Spatial and 
-                            Temporal Patterns of mismatch or residual between model simulation and Gravity Recovery and Climate Experiment (GRACE) 
-                            observations. Through three different 
-                            types of convolution neural network-based deep learning models, we show that deep learning is a viable approach for 
-                            improving model-GRACE match.
+                            Global hydrological models are increasingly being used to evaluate water availability and sea-level rise. However, deficiencies in the 
+                            conceptualization and parameterization in these models may introduce significant uncertainty in model predictions. A study by Alexander 
+                            Y. Sun and Bridget R. Scanlon applied Deep Learning to study the Spatial and Temporal Patterns of mismatch or residual between model 
+                            simulation and Gravity Recovery and Climate Experiment (GRACE) observations. Through three different types of convolution neural network-based 
+                            deep learning models, we show that deep learning is a viable approach for improving model-GRACE match.
                         </p>
                         <p>
-                            In this project, I apply a hybrid approach that combines physical-based modelling and Deep Learning. Specifically,
-                            using deep convolutional neural networks (CNN), a particular class of artificial neural networks, to study the spatiotemporal 
-                            patterns of "mismatch" between the Total water storage anomalies (TWSA) simulated by Land Surface model (LSM) and observed by GRACE. The term mismatch broadly refers to the 
-                            difference between two data sets or between model simulations and observations. The learned mismatch patterns are then fed 
-                            back to the LSM to compensate for losses in the LSM. That means that once trained and validated, and the CNN model may 
-                            be used to predict the observed TWSA without requiring GRACE TWSA as inputs, thus potentially filling the data gap between 
-                            GRACE and its follow-on mission. In the same fashion, the trained CNN model may also reconstruct TWSA for the pre-GRACE era. 
-                            The basic principle underlying our hybrid modelling approach is similar to that behind data assimilation methods, exploiting 
-                            mismatch patterns between predicted and observed variables.
+                            In this project, I apply a hybrid approach that combines physical-based modelling and Deep Learning. Specifically, using deep convolutional 
+                            neural networks (CNN), a particular class of artificial neural networks, to study the spatiotemporal patterns of "mismatch" between the 
+                            Total water storage anomalies (TWSA) simulated by the Land Surface Model (LSM) and observed by GRACE. The term mismatch broadly refers to 
+                            the difference between two data sets or between model simulations and observations. The learned mismatch patterns are then fed back to the 
+                            LSM to compensate for losses in the LSM. Once trained and validated, the CNN model may be used to predict the observed TWSA without requiring 
+                            GRACE TWSA as inputs, thus potentially filling the data gap between GRACE and its follow-on mission. The trained CNN model may also 
+                            reconstruct TWSA for the pre-GRACE era in the same fashion. The basic principle underlying this hybrid modelling approach is similar to 
+                            that behind data assimilation methods, exploiting mismatch patterns between predicted and observed variables.
                         </p>
                         <img src="{{ url_for('static', filename='images/pyGrace_CNN2.JPG') }}" class="img-responsive" alt="">
                         <p>
-                            As part of data preparation, all input data specifically are formatted or resampled into 2-D images of equal dimensions for all intents 
-                            and purposes big way. The input and target images essentially are normalized before training in a significant way. Then, to generally 
-                            enable the Convolutional Neural Network to examine the temporal correlation between each input, particularly variable and its antecedent 
-                            conditions, then stacking the input image at time t on top of its antecedent conditions to form a 3-D volume in a tremendous way. The 
-                            number of lags was two (i.e., t − 1, t − 2) after particularly preliminary experiments; thus, each input volume mostly has dimensions 
-                            128 × 128 × 3, which for the most part is reasonably significant. In stage I, each input volume goes through a very separate stack of 
-                            basically convolutional layers, demonstrating how as part of data preparation, all input data basically are formatted or resampled into 
-                            2-D images of really equal dimensions, contrary to popular belief. In stage II, output attribute maps from stage I are mostly merged, 
-                            and the results are fed to a deep learning model to arrive at the final outputs.
+                            As part of data preparation, all input data specifically are formatted or resampled into 2-D images of equal dimensions. The input and 
+                            target images essentially are normalized before training in a significant way. Then, to generally enable the Convolutional Neural Network 
+                            to examine the temporal correlation between each input, particularly variable and its antecedent conditions, then stacking the input 
+                            image at time t on top of its antecedent conditions to form a 3-D volume tremendously. The number of lags was two (i.e., t − 1, t − 2) 
+                            after particularly preliminary experiments; thus, each input volume mostly has dimensions 128 × 128 × 3, which for the most part is 
+                            reasonably significant. In stage I, each input volume goes through a very separate stack of basically convolutional layers, demonstrating 
+                            how as part of data preparation, all input data basically are formatted or resampled into 2-D images of really equal dimensions, contrary 
+                            to popular belief. In stage II, output attribute maps from stage I are mostly merged, and the results are fed to a deep learning model to 
+                            arrive at the final outputs.
                         </p>
                         <p>
                             The first stage aims to extract unique features from each input. In contrast, the generally second stage mainly aims to perform deep 
@@ -51,19 +48,17 @@
                         <h3><br>Unet architecture:</h3>
                         <img src="{{ url_for('static', filename='images/Unet_arch.png') }}" class="img-responsive" alt="">
                         <P>
-                            Unet specifically is a CNN focused on semantic segmentation problems, and it belongs to a class of encoder-decoder (also known as end-to-end) 
-                            model architectures. It consists of an encoding path (downsampling steps) to definitely capture image 
-                            context, followed by a symmetric decoding path (upsampling steps) to essentially enable precise localization. The number of filters used 
-                            is for the most part doubled after each downsampling step and then halved after each 
-                            upsampling step. Finally, a 1 × 1 generally convolutional layer is used for the most part to generate the output, 
-                            demonstrating how unet generally is a CNN focused on semantic segmentation problems.
+                            Unet specifically is a CNN focused on semantic segmentation problems, and it belongs to a class of encoder-decoder (also known as 
+                            end-to-end) model architectures. It consists of an encoding path (downsampling steps) to capture image context, followed by 
+                            symmetric decoding path (upsampling steps) to enable precise localization. The number of filters used is, for the most part, doubled 
+                            after each downsampling step and then halved after each upsampling step. Finally, a 1 × 1 generally convolutional layer is used for 
+                            the most part to generate the output, demonstrating how unet generally is a CNN focused on semantic segmentation problems.
                         </P>
                         <p>
-                            Unet models particularly are characterized by the copy and concatenation 
-                            operations (known as skip connections) that essentially combine the higher-resolution features from the downsampling path with the 
-                            upsampled features at the same level to localize fairly better and mostly learn representations. This kind of is also the part of 
-                            Unet that enables multiscale learning, demonstrating that this essentially is also 
-                            the part of Unet that enables multiscale learning in a sort of big way.
+                            Unet models are particularly characterized by the copy and concatenation operations (known as skip connections) that combine the 
+                            higher-resolution features from the downsampling path with the upsampled features at the same level to localize fairly better mostly 
+                            learn representations. This is also the part of Unet that enables multiscale learning, demonstrating that this essentially is also 
+                            the part of Unet that enables multiscale learning.
                         </P>
                         <h3><br>Data required:</h3>
                         <p>
@@ -72,7 +67,7 @@
                             by Jet Propulsion Laboratory (JPL).
                             <br>
                             <b>NOAH-></b> (Available from 2000-2019) The NOAH LSM from NASA's global land data assimilation system maintains surface 
-                            energy and water balances and simulate the exchange of water and energy fluxes at a soil-atmosphere interface. The 
+                            energy and water balances and simulates the exchange of water and energy fluxes at a soil-atmosphere interface. The 
                             NOAH simulated TWS is calculated by summing soil moisture in all four soil layers (0-200 cm depth), accumulative 
                             snow water, and total canopy water storage.
                         </p>
